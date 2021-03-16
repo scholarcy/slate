@@ -1,17 +1,17 @@
 ---
-title: API Reference
+title: Scholarcy API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - ruby
   - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://developers.scholarcy.com'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - posters
   - errors
 
 search: true
@@ -21,221 +21,83 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Scholarcy API. We have a number of endpoints for extracting machine-readable knowledge from documents in many formats.
+The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We provid examples Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
-> To authorize, use this code:
+> Authentication headers must be sent with every request:
 
 ```ruby
-require 'kittn'
+require 'rest-client'
+AUTH_TOKEN = 'abcdef' # Your API key
+API_DOMAIN = 'https://api.scholarcy.com'
+POST_ENDPOINT = API_DOMAIN + '/api/posters/generate'
+headers = {"Authorization": "Bearer " + AUTH_TOKEN}
+file_path = '/path/to/local/file.pdf'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+request = RestClient::Request.new(
+          :method => :post,
+          :url => POST_ENDPOINT,
+          :headers => headers,
+          :payload => {
+            :multipart => true,
+            :file => File.new(file_path, 'rb')
+          })
+response = request.execute
+puts(response.body)
 ```
 
 ```python
-import kittn
+import requests
+timeout = 30
 
-api = kittn.authorize('meowmeowmeow')
+AUTH_TOKEN = 'abcdefg' # Your API key
+API_DOMAIN = 'https://api.scholarcy.com'
+POST_ENDPOINT = API_DOMAIN + '/api/posters/generate'
+headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
+
+file_path = '/path/to/local/file.pdf'
+
+with open(file_path, 'rb') as file_data:
+    file_payload = {'file': file_data}
+    r = requests.post(POST_ENDPOINT,
+          headers=headers,
+          files=file_payload,
+          timeout=timeout)
+    print(r.json())
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
+curl "https://api.scholarcy.com/api/posters/generate" \
+  -H "Authorization: Bearer abcdefg" \
+  -F "file=@/path/to/local/file.pdf"
+
+  curl "https://api.scholarcy.com/api/posters/generate" \
+    -H "Authorization: Bearer abcdefg" \
+    -d "url=https://www.nature.com/articles/s41746-019-0180-3"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `abcdefg` with your API key.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+We currently have an open API which can be used without authentication for a limited number of
+documents per day with documents below 7MB in size.
 
-> Make sure to replace `meowmeowmeow` with your API key.
+For unauthenticated use, please omit the `Authorization` header,
+or pass an empty string for the `Bearer` token.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+For full, authenticated use of the API, you may contact us for an API key - please see our [Pricing page](https://www.scholarcy.com/pricing/).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Soon you will be able to self-register an Scholarcy API key at our [developer portal](https://developers.scholarcy.com).
 
-`Authorization: meowmeowmeow`
+The Scholarcy API expects the API key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: Bearer abcdefg`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>abcdefg</code> with your personal API key.
 </aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
