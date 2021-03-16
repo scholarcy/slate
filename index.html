@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Scholarcy API Reference</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -291,7 +291,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -299,12 +299,11 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-d50b74dc.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -318,16 +317,13 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#generate-a-poster" class="toc-h1 toc-link" data-title="Generate a Poster">Generate a Poster</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#post-a-local-file" class="toc-h2 toc-link" data-title="POST a local file">POST a local file</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-a-poster-from-a-url" class="toc-h2 toc-link" data-title="GET a poster from a URL">GET a poster from a URL</a>
                   </li>
               </ul>
           </li>
@@ -336,7 +332,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://developers.scholarcy.com'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -344,79 +340,233 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Scholarcy API. We have a number of endpoints for extracting machine-readable knowledge from documents in many formats.
+The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>We provid examples Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Authentication headers must be sent with every request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+  curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span>
 </code></pre></div>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code>abcdefg</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>We currently have an open API which can be used without authentication for a limited number of
+documents per day with documents below 7MB in size.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>For unauthenticated use, please omit the <code>Authorization</code> header,
+or pass an empty string for the <code>Bearer</code> token.</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>For full, authenticated use of the API, you may contact us for an API key - please see our <a href="https://www.scholarcy.com/pricing/">Pricing page</a>.</p>
+
+<p>Soon you will be able to self-register an Scholarcy API key at our <a href="https://developers.scholarcy.com">developer portal</a>.</p>
+
+<p>The Scholarcy API expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Bearer abcdefg</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>abcdefg</code> with your personal API key.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='generate-a-poster'>Generate a Poster</h1>
+<p>These API endpoints will extract the information needed to populate data into your own poster-creation services, and will also generate a basic Powerpoint template for you to use as a starting point for editing.</p>
+<h2 id='post-a-local-file'>POST a local file</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
+            <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
+    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
+    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1. Smith, J. (2001) A study on self-citation. J. Chem. Biol., 123, 456-789."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"2. Jones, R. (2015) He didn't write this one. Science, 101, 101010."</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"smith.j@uni.ac.uk"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 1 caption"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 2 caption"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://api.scholarcy.com/images/file.pdf_agtuhsnt_images_1x1uj_5t/img-000.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://api.scholarcy.com/images/file.pdf_agtuhsnt_images_1x1uj_5t/img-002.png"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"poster_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.scholarcy.com/posters/file.pdf_agtuhsnt.pptx"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"atomic force microscopy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dna nanostructure"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"drug release"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"single-stranded DNA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"double-stranded DNA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dox molecule"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"DONs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNA origami nanostructures"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ROS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reactive oxygen species"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"DNase I"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deoxyribonuclease I"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"PEG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"polyethylene glycol"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Facts are very important."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"The force is strong in this one."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We ran some tests and this is what we found"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Introduction paragraph 2"</span><span class="p">,</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"We mixed some chemicals."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"We heated them up."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"We distilled the mixture."</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"There was a big explosion"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"But the crystals were pure"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"We identified a new compound"</span><span class="p">,</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"We proved some important things and we summarise them here."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Further work is necessary"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint generates a poster from a local file. File formats supported are:</p>
+
+<ul>
+<li>PDF</li>
+<li>Word (.docx)</li>
+<li>Rich Text (.rtf)</li>
+<li>Powerpoint (.pptx)</li>
+<li>BibTeX (.bib)</li>
+<li>RIS (.ris)</li>
+<li>XML</li>
+<li>HTML</li>
+<li>Plain Text (.txt)</li>
+<li>LaTeX (.tex)</li>
+</ul>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
+<p><code>POST http://api.scholarcy.com/api/posters/generate</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -426,108 +576,185 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>file</td>
+<td>null</td>
+<td>A file object.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>full</td>
+<td>The type of poster to generate. <code>full</code> will create a large, landscape poster with blocks for each section. <code>headline</code> will create a portrait poster containing the main takeaway finding and a single image.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember to include your Authentication token with every request.
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id='get-a-poster-from-a-url'>GET a poster from a URL</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
+<span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+      <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
+
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured as for the POST endpoint:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"smith.j@uni.ac.uk"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 1 caption"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 2 caption"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"poster_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.scholarcy.com/posters/file.pdf_agtuhsnt.pptx"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint generates a poster from a remote URL.
+The remote URL can resolve to a document type of any of the formats listed for the POST endpoint</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><code>GET http://api.scholarcy.com/api/posters/generate</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>full</td>
+<td>The type of poster to generate. <code>full</code> will create a large, landscape poster with blocks for each section. <code>headline</code> will create a portrait poster containing the main takeaway finding and a single image.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+<aside class="success">
+Remember to include your Authentication token with every request.
 </aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<h1 id='errors'>Errors</h1>
+<p>The Scholarcy API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -545,31 +772,23 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The API endpoint requested is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The API endpoint could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to call the API with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t JSON.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re making too many API requests.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -579,6 +798,10 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>503</td>
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
+<tr>
+<td>504</td>
+<td>Gateway Timeout -- Serving your request took longer than expected. Please try again.</td>
+</tr>
 </tbody></table>
 
       </div>
@@ -587,7 +810,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
