@@ -1,0 +1,2496 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Scholarcy API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-a9fde460.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-d50b74dc.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="python">python</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#generate-a-poster" class="toc-h1 toc-link" data-title="Generate a Poster">Generate a Poster</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-a-local-file-to-generate-a-poster" class="toc-h2 toc-link" data-title="POST a local file to generate a poster">POST a local file to generate a poster</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-poster-from-a-url" class="toc-h2 toc-link" data-title="GET a poster from a URL">GET a poster from a URL</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#extract-highlights" class="toc-h1 toc-link" data-title="Extract Highlights">Extract Highlights</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-a-local-file-to-extract-highlights" class="toc-h2 toc-link" data-title="POST a local file to extract highlights">POST a local file to extract highlights</a>
+                  </li>
+                  <li>
+                    <a href="#get-highlights-from-a-url" class="toc-h2 toc-link" data-title="GET highlights from a URL">GET highlights from a URL</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#extract-structured-content" class="toc-h1 toc-link" data-title="Extract Structured Content">Extract Structured Content</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-a-local-file-to-extract-content" class="toc-h2 toc-link" data-title="POST a local file to extract content">POST a local file to extract content</a>
+                  </li>
+                  <li>
+                    <a href="#get-structured-content-from-a-url" class="toc-h2 toc-link" data-title="GET structured content from a URL">GET structured content from a URL</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#extract-key-terms" class="toc-h1 toc-link" data-title="Extract Key Terms">Extract Key Terms</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-a-local-file-to-extract-key-terms" class="toc-h2 toc-link" data-title="POST a local file to extract key terms">POST a local file to extract key terms</a>
+                  </li>
+                  <li>
+                    <a href="#get-key-terms-from-a-url" class="toc-h2 toc-link" data-title="GET key terms from a URL">GET key terms from a URL</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://developers.scholarcy.com'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Scholarcy API. We have a number of endpoints for extracting machine-readable knowledge from documents in many formats.
+The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.</p>
+
+<p>We provid examples Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>Authentication headers must be sent with every request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span>
+
+  curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>abcdefg</code> with your API key.</p>
+</blockquote>
+
+<p>We currently have an open API which can be used without authentication for a limited number of
+documents per day with documents below 7MB in size.</p>
+
+<p>For unauthenticated use, please omit the <code>Authorization</code> header,
+or pass an empty string for the <code>Bearer</code> token.</p>
+
+<p>For full, authenticated use of the API, you may contact us for an API key - please see our <a href="https://www.scholarcy.com/pricing/">Pricing page</a>.</p>
+
+<p>Soon you will be able to self-register an Scholarcy API key at our <a href="https://developers.scholarcy.com">developer portal</a>.</p>
+
+<p>The Scholarcy API expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Bearer abcdefg</code></p>
+
+<aside class="notice">
+You must replace <code>abcdefg</code> with your personal API key.
+</aside>
+<h1 id='generate-a-poster'>Generate a Poster</h1>
+<p>These API endpoints will extract the information needed to populate data into your own poster-creation services, and will also generate a basic Powerpoint template for you to use as a starting point for editing.</p>
+<h2 id='post-a-local-file-to-generate-a-poster'>POST a local file to generate a poster</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
+            <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
+    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
+    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1. Smith, J. (2001) A study on self-citation. J. Chem. Biol., 123, 456-789."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"2. Jones, R. (2015) He didn't write this one. Science, 101, 101010."</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"smith.j@uni.ac.uk"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 1 caption"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 2 caption"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://api.scholarcy.com/images/file.pdf_agtuhsnt_images_1x1uj_5t/img-000.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://api.scholarcy.com/images/file.pdf_agtuhsnt_images_1x1uj_5t/img-002.png"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"poster_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.scholarcy.com/posters/file.pdf_agtuhsnt.pptx"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"atomic force microscopy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dna nanostructure"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"drug release"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"single-stranded DNA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"double-stranded DNA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dox molecule"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"DONs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNA origami nanostructures"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ROS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reactive oxygen species"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"DNase I"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deoxyribonuclease I"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"PEG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"polyethylene glycol"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Facts are very important."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"The force is strong in this one."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We ran some tests and this is what we found"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Introduction paragraph 2"</span><span class="p">,</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"We mixed some chemicals."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"We heated them up."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"We distilled the mixture."</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"There was a big explosion"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"But the crystals were pure"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"We identified a new compound"</span><span class="p">,</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"We proved some important things and we summarise them here."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Further work is necessary"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint generates a poster from a local file. File formats supported are:</p>
+
+<ul>
+<li>PDF</li>
+<li>Word (.docx)</li>
+<li>Rich Text (.rtf)</li>
+<li>Powerpoint (.pptx)</li>
+<li>BibTeX (.bib)</li>
+<li>RIS (.ris)</li>
+<li>XML</li>
+<li>HTML</li>
+<li>Plain Text (.txt)</li>
+<li>LaTeX (.tex)</li>
+</ul>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://api.scholarcy.com/api/posters/generate</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>null</td>
+<td>A file object.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>full</td>
+<td>The type of poster to generate. <code>full</code> will create a large, landscape poster with blocks for each section. <code>headline</code> will create a portrait poster containing the main takeaway finding and a single image.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h2 id='get-a-poster-from-a-url'>GET a poster from a URL</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/posters/generate'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
+<span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+      <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured as for the POST endpoint:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"smith.j@uni.ac.uk"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 1 caption"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 2 caption"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"poster_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.scholarcy.com/posters/file.pdf_agtuhsnt.pptx"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint generates a poster from a remote URL.
+The remote URL can resolve to a document type of any of the formats listed for the POST endpoint</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.scholarcy.com/api/posters/generate</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>full</td>
+<td>The type of poster to generate. <code>full</code> will create a large, landscape poster with blocks for each section. <code>headline</code> will create a portrait poster containing the main takeaway finding and a single image.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h1 id='extract-highlights'>Extract Highlights</h1>
+<p>These API endpoints will pull out the key findings/highlights of an article and also provide a longer, extractive summary.</p>
+<h2 id='post-a-local-file-to-extract-highlights'>POST a local file to extract highlights</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/highlights/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
+            <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/highlights/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
+    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
+    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/highlights/extract"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"award-group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"funding-source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEDER/COMPETE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"AAA/BBB/04007/2019"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"funding-statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We acknowledge financial support from Fundação para a Ciência e a Tecnologia and FEDER/COMPETE (grant AAA/BBB/04007/2019)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"atomic force microscopy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dna nanostructure"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"drug release"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"single-stranded DNA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"double-stranded DNA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dox molecule"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"keyword_relevance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"atomic force microscopy"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.345678</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dna nanostructure"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"drug release"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.12345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"single-stranded DNA"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.034567</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"double-stranded DNA"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dox molecule"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01234</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"DONs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNA origami nanostructures"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ROS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reactive oxygen species"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DNase I"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deoxyribonuclease I"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PEG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"polyethylene glycol"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Facts are very important."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"The force is strong in this one."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"We ran some tests and this is what we found"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"A statistically significant difference was noted between the four groups on the combined dependent variables"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"We also noted significant differences when we performed a one-way between-groups analysis of variance on each of the 14 items (P &lt; 0.001)"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"structured_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Introduction paragraph 2"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"We mixed some chemicals."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We heated them up."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We distilled the mixture."</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"There was a big explosion"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"But the crystals were pure"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We identified a new compound"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"We proved some important things and we summarise them here."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Further work is necessary"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint extracts highlights from a local file. File formats supported are:</p>
+
+<ul>
+<li>PDF</li>
+<li>Word (.docx)</li>
+<li>Rich Text (.rtf)</li>
+<li>Powerpoint (.pptx)</li>
+<li>BibTeX (.bib)</li>
+<li>RIS (.ris)</li>
+<li>XML</li>
+<li>HTML</li>
+<li>Plain Text (.txt)</li>
+<li>LaTeX (.tex)</li>
+</ul>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://api.scholarcy.com/api/highlights/extract</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>null</td>
+<td>A file object.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>null</td>
+<td>Plain text content to be processed.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>external_metadata</td>
+<td>false</td>
+<td>If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>If true, map extracted key terms to their Wikipedia pages</td>
+</tr>
+<tr>
+<td>reference_links</td>
+<td>false</td>
+<td>If true, parse and link each reference to its full text location</td>
+</tr>
+<tr>
+<td>replace_pronouns</td>
+<td>false</td>
+<td>If true, replace first-person pronouns with third-person mentions (the author(s)?, they).</td>
+</tr>
+<tr>
+<td>key_points</td>
+<td>5</td>
+<td>The number of key points/key takeaway items to extract.</td>
+</tr>
+<tr>
+<td>sampling</td>
+<td>representative</td>
+<td>For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.</td>
+</tr>
+<tr>
+<td>extract_snippets</td>
+<td>true</td>
+<td>If true, sample snippets from each section, otherwise, sample the full text.</td>
+</tr>
+<tr>
+<td>add_background_info</td>
+<td>false</td>
+<td>If true, generate an introductory sentence. Useful generating an abstract from an article.</td>
+</tr>
+<tr>
+<td>add_concluding_info</td>
+<td>false</td>
+<td>If true, generate an concluding sentence. Useful generating an abstract from an article.</td>
+</tr>
+<tr>
+<td>structured_summary</td>
+<td>false</td>
+<td>If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.</td>
+</tr>
+<tr>
+<td>summary_engine</td>
+<td>v1</td>
+<td>v1: Best for articles. v2: best for book chapters.</td>
+</tr>
+<tr>
+<td>highlights_algorithm</td>
+<td>weighted</td>
+<td>weighted: attend more closely to the results and conclusion. unweighted: attend to all content equally.</td>
+</tr>
+<tr>
+<td>headline_from</td>
+<td>highlights</td>
+<td>highlights: use the highest scoring highlight as the headline. summary: use the first summary sentence as the headline. conclusions: use the first conclusion statement as a headline. claims: use the main claim as the headline.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h2 id='get-highlights-from-a-url'>GET highlights from a URL</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/highlights/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/highlights/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
+<span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+      <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/highlights/extract"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured as for the POST endpoint:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"award-group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"funding-source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEDER/COMPETE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"AAA/BBB/04007/2019"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"funding-statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"keyword_relevance"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"structured_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint extracts highlights from a remote URL.
+The remote URL can resolve to a document type of any of the formats listed for the POST endpoint</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.scholarcy.com/api/highlights/extract</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>null</td>
+<td>Plain text content to be processed.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>external_metadata</td>
+<td>false</td>
+<td>If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>If true, map extracted key terms to their Wikipedia pages</td>
+</tr>
+<tr>
+<td>reference_links</td>
+<td>false</td>
+<td>If true, parse and link each reference to its full text location</td>
+</tr>
+<tr>
+<td>replace_pronouns</td>
+<td>false</td>
+<td>If true, replace first-person pronouns with third-person mentions (the author(s)?, they).</td>
+</tr>
+<tr>
+<td>key_points</td>
+<td>5</td>
+<td>The number of key points/key takeaway items to extract.</td>
+</tr>
+<tr>
+<td>sampling</td>
+<td>representative</td>
+<td>For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.</td>
+</tr>
+<tr>
+<td>extract_snippets</td>
+<td>true</td>
+<td>If true, sample snippets from each section, otherwise, sample the full text.</td>
+</tr>
+<tr>
+<td>add_background_info</td>
+<td>false</td>
+<td>If true, generate an introductory sentence. Useful generating an abstract from an article.</td>
+</tr>
+<tr>
+<td>add_concluding_info</td>
+<td>false</td>
+<td>If true, generate an concluding sentence. Useful generating an abstract from an article.</td>
+</tr>
+<tr>
+<td>structured_summary</td>
+<td>false</td>
+<td>If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.</td>
+</tr>
+<tr>
+<td>summary_engine</td>
+<td>v1</td>
+<td>v1: Best for articles. v2: best for book chapters.</td>
+</tr>
+<tr>
+<td>highlights_algorithm</td>
+<td>weighted</td>
+<td>weighted: attend more closely to the results and conclusion. unweighted: attend to all content equally.</td>
+</tr>
+<tr>
+<td>headline_from</td>
+<td>highlights</td>
+<td>highlights: use the highest scoring highlight as the headline. summary: use the first summary sentence as the headline. conclusions: use the first conclusion statement as a headline. claims: use the main claim as the headline.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h1 id='extract-structured-content'>Extract Structured Content</h1>
+<p>These API endpoints will convert a document into structured, machine-readable data in JSON format.</p>
+<h2 id='post-a-local-file-to-extract-content'>POST a local file to extract content</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/metadata/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
+            <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/metadata/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
+    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
+    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/metadata/extract"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"author@email.com"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"award-group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"funding-source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEDER/COMPETE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"AAA/BBB/04007/2019"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"funding-statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We acknowledge financial support from Fundação para a Ciência e a Tecnologia and FEDER/COMPETE (grant AAA/BBB/04007/2019)"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"table_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample demographics and characteristics"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Construct measurements"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Introduction section contents"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"methodology"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Methods section contents"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Main results contents"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Concluding remarks"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"limitations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"There are also several limitations to this research. Small sample size was an issue."</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"acknowledgements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"We'd like to thank our supervisors for support, tea and biscuits."</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"The authors acknowledge financial support from Fundação para a Ciência e a Tecnologia and FEDER/COMPETE (grant AAA/BBB/04007/2019)"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"future_work"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"More research is needed to better understand what is going on."</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"objectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"The aim of this research is to provide insights into the inner workings of cellular processes."</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"structured_content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABSTRACT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRODUCTION"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Introduction paragraph 2"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESEARCH METHODOLOGY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Methods paragraph 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Methods paragraph 2"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FINDINGS AND DISCUSSION"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Results paragraph 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Results paragraph 2"</span><span class="p">,</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONCLUSION"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Conclusion paragraph 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Conclusion paragraph 2"</span><span class="p">,</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"participants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"participant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patients"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fifteen patients participated in the study."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We performed exploratory factor analysis using SPSS 20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exploratory factor analysis"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We performed confirmatory factor analyses with AMOS 20 using the maximum likelihood estimation method"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmatory factor analyses"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maximum likelihood estimation method"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"p_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P &lt; 0.001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We also noted significant differences when we performed a one-way between-groups analysis of variance on each of the 14 items (P &lt; 0.001)&lt;/mark&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"tests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"analysis of variance"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P &lt; 0.001"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"atomic force microscopy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dna nanostructure"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"drug release"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"single-stranded DNA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"double-stranded DNA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dox molecule"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"keyword_relevance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"atomic force microscopy"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.345678</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dna nanostructure"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"drug release"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.12345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"single-stranded DNA"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.034567</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"double-stranded DNA"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dox molecule"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01234</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"DONs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNA origami nanostructures"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ROS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reactive oxygen species"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DNase I"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deoxyribonuclease I"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PEG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"polyethylene glycol"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_statements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Facts are very important."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"The force is strong in this one."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"We ran some tests and this is what we found"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"A statistically significant difference was noted between the four groups on the combined dependent variables"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"We also noted significant differences when we performed a one-way between-groups analysis of variance on each of the 14 items (P &lt; 0.001)"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"facts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"structured_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Introduction paragraph 2"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"We mixed some chemicals."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We heated them up."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We distilled the mixture."</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"There was a big explosion"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"But the crystals were pure"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We identified a new compound"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"We proved some important things and we summarise them here."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Further work is necessary"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint extracts structured content from a local file. File formats supported are:</p>
+
+<ul>
+<li>PDF</li>
+<li>Word (.docx)</li>
+<li>Rich Text (.rtf)</li>
+<li>Powerpoint (.pptx)</li>
+<li>BibTeX (.bib)</li>
+<li>RIS (.ris)</li>
+<li>XML</li>
+<li>HTML</li>
+<li>Plain Text (.txt)</li>
+<li>LaTeX (.tex)</li>
+</ul>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://api.scholarcy.com/api/metadata/extract</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>null</td>
+<td>A file object.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>null</td>
+<td>Plain text content to be processed.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>external_metadata</td>
+<td>false</td>
+<td>If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).</td>
+</tr>
+<tr>
+<td>parse_references</td>
+<td>false</td>
+<td>If true, parse into BibTeX and link each reference to its full text location.</td>
+</tr>
+<tr>
+<td>reference_style</td>
+<td>ensemble</td>
+<td>Referencing style used by the document, if known, or use the default. Available values : acs, ama, anystyle, apa, chicago, ensemble, experimental, harvard, ieee, mhra, mla, nature, vancouver.</td>
+</tr>
+<tr>
+<td>reference_format</td>
+<td>text</td>
+<td>Output references in plain text or bibtex format.</td>
+</tr>
+<tr>
+<td>generate_summary</td>
+<td>true</td>
+<td>Create an extractive summary of the article.</td>
+</tr>
+<tr>
+<td>summary_engine</td>
+<td>v1</td>
+<td>v1: Best for articles. v2: best for book chapters.</td>
+</tr>
+<tr>
+<td>replace_pronouns</td>
+<td>false</td>
+<td>If true, replace first-person pronouns in summary with third-person mentions (the author(s)?, they).</td>
+</tr>
+<tr>
+<td>strip_dialogue</td>
+<td>false</td>
+<td>If true, remove dialog and quoted text from input prior to summarising.</td>
+</tr>
+<tr>
+<td>summary_size</td>
+<td>400</td>
+<td>Length of summary in words.</td>
+</tr>
+<tr>
+<td>summary_percent</td>
+<td>0</td>
+<td>Length of summary as a % of the original article.</td>
+</tr>
+<tr>
+<td>structured_summary</td>
+<td>false</td>
+<td>If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.</td>
+</tr>
+<tr>
+<td>keyword_method</td>
+<td>sgrank+acr</td>
+<td>Available values : sgrank, sgrank+np, sgrank+acr, textrank, np, regex.</td>
+</tr>
+<tr>
+<td>keyword_sample</td>
+<td>representative</td>
+<td>For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.</td>
+</tr>
+<tr>
+<td>keyword_limit</td>
+<td>25</td>
+<td>Target number of key terms to extract.</td>
+</tr>
+<tr>
+<td>abbreviation_method</td>
+<td>schwartz</td>
+<td>Select an abbreviation extraction method. Available values: schwartz, statistical, ensemble.</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>If true, map extracted key terms to their Wikipedia pages.</td>
+</tr>
+<tr>
+<td>extract_facts</td>
+<td>true</td>
+<td>Extract SVO-style factual statements from the article.</td>
+</tr>
+<tr>
+<td>extract_claims</td>
+<td>true</td>
+<td>Extract specific claims made by the article.</td>
+</tr>
+<tr>
+<td>key_points</td>
+<td>5</td>
+<td>The number of key points/key takeaway items to extract.</td>
+</tr>
+<tr>
+<td>citation_contexts</td>
+<td>false</td>
+<td>If true, extract the inline citation contexts (preceding and current sentences).</td>
+</tr>
+<tr>
+<td>inline_citation_links</td>
+<td>false</td>
+<td>If true, link inline citations to their identifiers in the references.</td>
+</tr>
+<tr>
+<td>extract_pico</td>
+<td>true</td>
+<td>Extract population, intervention, control, outcome data.</td>
+</tr>
+<tr>
+<td>extract_tables</td>
+<td>false</td>
+<td>If true, extract tabular data as CSV/Excel files.</td>
+</tr>
+<tr>
+<td>extract_figures</td>
+<td>false</td>
+<td>If true, extract figures and images as PNG files.</td>
+</tr>
+<tr>
+<td>require_captions</td>
+<td>true</td>
+<td>Requires an accompanying caption to trigger figure/table extraction.</td>
+</tr>
+<tr>
+<td>extract_sections</td>
+<td>true</td>
+<td>Extracts section headers and paragraphs.</td>
+</tr>
+<tr>
+<td>include_bodytext</td>
+<td>true</td>
+<td>If extracting sections, includes the main body text content for each section.</td>
+</tr>
+<tr>
+<td>unstructured_content</td>
+<td>false</td>
+<td>If true, include a raw, unstructured text dump of the file.</td>
+</tr>
+<tr>
+<td>extract_snippets</td>
+<td>true</td>
+<td>If true, sample snippets from each section, otherwise, sample the full text.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>v1</td>
+<td>PDF text extraction engine. v1: best general purpose. v2: best for articles containing marginal line numbering or narrow column gutters.</td>
+</tr>
+<tr>
+<td>image_engine</td>
+<td>v1</td>
+<td>Image extraction engine. v1: best for bitmap images. v2: best for line images. Available values : v1, v2, v1+v2.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h2 id='get-structured-content-from-a-url'>GET structured content from a URL</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/metadata/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/metadata/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
+<span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+      <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/metadata/extract"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured as for the POST endpoint:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"author@email.com"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"table_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"methodology"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"limitations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"acknowledgements"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"future_work"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"objectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"structured_content"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"participants"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"keyword_relevance"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_statements"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"facts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"structured_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint extracts structured content from a remote URL.
+The remote URL can resolve to a document type of any of the formats listed for the POST endpoint</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.scholarcy.com/api/metadata/extract</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>null</td>
+<td>Plain text content to be processed.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>external_metadata</td>
+<td>false</td>
+<td>If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).</td>
+</tr>
+<tr>
+<td>parse_references</td>
+<td>false</td>
+<td>If true, parse into BibTeX and link each reference to its full text location.</td>
+</tr>
+<tr>
+<td>reference_style</td>
+<td>ensemble</td>
+<td>Referencing style used by the document, if known, or use the default. Available values : acs, ama, anystyle, apa, chicago, ensemble, experimental, harvard, ieee, mhra, mla, nature, vancouver.</td>
+</tr>
+<tr>
+<td>reference_format</td>
+<td>text</td>
+<td>Output references in plain text or bibtex format.</td>
+</tr>
+<tr>
+<td>generate_summary</td>
+<td>true</td>
+<td>Create an extractive summary of the article.</td>
+</tr>
+<tr>
+<td>summary_engine</td>
+<td>v1</td>
+<td>v1: Best for articles. v2: best for book chapters.</td>
+</tr>
+<tr>
+<td>replace_pronouns</td>
+<td>false</td>
+<td>If true, replace first-person pronouns in summary with third-person mentions (the author(s)?, they).</td>
+</tr>
+<tr>
+<td>strip_dialogue</td>
+<td>false</td>
+<td>If true, remove dialog and quoted text from input prior to summarising.</td>
+</tr>
+<tr>
+<td>summary_size</td>
+<td>400</td>
+<td>Length of summary in words.</td>
+</tr>
+<tr>
+<td>summary_percent</td>
+<td>0</td>
+<td>Length of summary as a % of the original article.</td>
+</tr>
+<tr>
+<td>structured_summary</td>
+<td>false</td>
+<td>If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.</td>
+</tr>
+<tr>
+<td>keyword_method</td>
+<td>sgrank+acr</td>
+<td>Available values : sgrank, sgrank+np, sgrank+acr, textrank, np, regex.</td>
+</tr>
+<tr>
+<td>keyword_sample</td>
+<td>representative</td>
+<td>For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.</td>
+</tr>
+<tr>
+<td>keyword_limit</td>
+<td>25</td>
+<td>Target number of key terms to extract.</td>
+</tr>
+<tr>
+<td>abbreviation_method</td>
+<td>schwartz</td>
+<td>Select an abbreviation extraction method. Available values: schwartz, statistical, ensemble.</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>If true, map extracted key terms to their Wikipedia pages.</td>
+</tr>
+<tr>
+<td>extract_facts</td>
+<td>true</td>
+<td>Extract SVO-style factual statements from the article.</td>
+</tr>
+<tr>
+<td>extract_claims</td>
+<td>true</td>
+<td>Extract specific claims made by the article.</td>
+</tr>
+<tr>
+<td>key_points</td>
+<td>5</td>
+<td>The number of key points/key takeaway items to extract.</td>
+</tr>
+<tr>
+<td>citation_contexts</td>
+<td>false</td>
+<td>If true, extract the inline citation contexts (preceding and current sentences).</td>
+</tr>
+<tr>
+<td>inline_citation_links</td>
+<td>false</td>
+<td>If true, link inline citations to their identifiers in the references.</td>
+</tr>
+<tr>
+<td>extract_pico</td>
+<td>true</td>
+<td>Extract population, intervention, control, outcome data.</td>
+</tr>
+<tr>
+<td>extract_tables</td>
+<td>false</td>
+<td>If true, extract tabular data as CSV/Excel files.</td>
+</tr>
+<tr>
+<td>extract_figures</td>
+<td>false</td>
+<td>If true, extract figures and images as PNG files.</td>
+</tr>
+<tr>
+<td>require_captions</td>
+<td>true</td>
+<td>Requires an accompanying caption to trigger figure/table extraction.</td>
+</tr>
+<tr>
+<td>extract_sections</td>
+<td>true</td>
+<td>Extracts section headers and paragraphs.</td>
+</tr>
+<tr>
+<td>include_bodytext</td>
+<td>true</td>
+<td>If extracting sections, includes the main body text content for each section.</td>
+</tr>
+<tr>
+<td>unstructured_content</td>
+<td>false</td>
+<td>If true, include a raw, unstructured text dump of the file.</td>
+</tr>
+<tr>
+<td>extract_snippets</td>
+<td>true</td>
+<td>If true, sample snippets from each section, otherwise, sample the full text.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>v1</td>
+<td>PDF text extraction engine. v1: best general purpose. v2: best for articles containing marginal line numbering or narrow column gutters.</td>
+</tr>
+<tr>
+<td>image_engine</td>
+<td>v1</td>
+<td>Image extraction engine. v1: best for bitmap images. v2: best for line images. Available values : v1, v2, v1+v2.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h1 id='extract-key-terms'>Extract Key Terms</h1>
+<p>These API endpoints will pull out the key terms from an article.</p>
+<h2 id='post-a-local-file-to-extract-key-terms'>POST a local file to extract key terms</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/keywords/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
+            <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/keywords/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
+    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
+    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/keywords/extract"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"article2016.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"U&amp;G"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uses and gratification"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SNS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social networking sites"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"COBRA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consumer Online Brand-Related Activity"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"AVE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"average variance extracted"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CLF"</span><span class="p">:</span><span class="w"> </span><span class="s2">"common latent factor"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facebook"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Facebook"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"typology"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/typology"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social media"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/social_media"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consumer behavior"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/consumer_behavior"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"average variance extracted"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/average_variance_extracted"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online branding"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/online_branding"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cluster analysis"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cluster_analysis"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social networking sites"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/social_networking_sites"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brand manager"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/brand_manager"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"keyword_relevance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Facebook"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3834808259587021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social media"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16224188790560473</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social networking sites"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08259587020648967</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand interaction"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.07964601769911504</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"typology"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.038348082595870206</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand manager"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.038348082595870206</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uses and gratification"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.035398230088495575</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consumer interaction"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.032448377581120944</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consumer behavior"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02359882005899705</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand communication"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02064896755162242</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cluster analysis"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017699115044247787</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"main motivation"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017699115044247787</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Consumer Online Brand-Related Activity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.014749262536873156</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"average variance extracted"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011799410029498525</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"common latent factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"online branding"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command can also returns CSV structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>"filename","key term","wikipedia_link"
+"article2016.pdf","Facebook","https://en.wikipedia.org/wiki/Facebook"
+"article2016.pdf","typology","https://en.wikipedia.org/wiki/typology"
+"article2016.pdf","social media","https://en.wikipedia.org/wiki/social_media"
+"article2016.pdf","consumer behavior","https://en.wikipedia.org/wiki/consumer_behavior"
+"article2016.pdf","average variance extracted","https://en.wikipedia.org/wiki/average_variance_extracted"
+"article2016.pdf","online branding","https://en.wikipedia.org/wiki/online_branding"
+"article2016.pdf","cluster analysis","https://en.wikipedia.org/wiki/cluster_analysis"
+"article2016.pdf","social networking sites","https://en.wikipedia.org/wiki/social_networking_sites"
+"article2016.pdf","brand manager","https://en.wikipedia.org/wiki/brand_manager"
+</code></pre></div>
+<p>This endpoint extracts key terms from a local file. File formats supported are:</p>
+
+<ul>
+<li>PDF</li>
+<li>Word (.docx)</li>
+<li>Rich Text (.rtf)</li>
+<li>Powerpoint (.pptx)</li>
+<li>BibTeX (.bib)</li>
+<li>RIS (.ris)</li>
+<li>XML</li>
+<li>HTML</li>
+<li>Plain Text (.txt)</li>
+<li>LaTeX (.tex)</li>
+</ul>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://api.scholarcy.com/api/keywords/extract</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>null</td>
+<td>A file object.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>null</td>
+<td>Plain text content to be processed.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>external_metadata</td>
+<td>false</td>
+<td>If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>If true, map extracted key terms to their Wikipedia pages</td>
+</tr>
+<tr>
+<td>sampling</td>
+<td>representative</td>
+<td>For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.</td>
+</tr>
+<tr>
+<td>extract_snippets</td>
+<td>true</td>
+<td>If true, sample snippets from each section, otherwise, sample the full text.</td>
+</tr>
+<tr>
+<td>output_format</td>
+<td>json</td>
+<td>json or CSV.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h2 id='get-key-terms-from-a-url'>GET key terms from a URL</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/keywords/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
+            <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://api.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/keywords/extract'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
+<span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+      <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/keywords/extract"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured as for the POST endpoint:</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"article2016.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"U&amp;G"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uses and gratification"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SNS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social networking sites"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"COBRA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consumer Online Brand-Related Activity"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"AVE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"average variance extracted"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CLF"</span><span class="p">:</span><span class="w"> </span><span class="s2">"common latent factor"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facebook"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Facebook"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"typology"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/typology"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social media"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/social_media"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consumer behavior"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/consumer_behavior"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"average variance extracted"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/average_variance_extracted"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online branding"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/online_branding"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cluster analysis"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cluster_analysis"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social networking sites"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/social_networking_sites"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brand manager"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/brand_manager"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"keyword_relevance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Facebook"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3834808259587021</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social media"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16224188790560473</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social networking sites"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08259587020648967</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand interaction"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.07964601769911504</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"typology"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.038348082595870206</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand manager"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.038348082595870206</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uses and gratification"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.035398230088495575</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consumer interaction"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.032448377581120944</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consumer behavior"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02359882005899705</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand communication"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02064896755162242</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cluster analysis"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017699115044247787</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"main motivation"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017699115044247787</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Consumer Online Brand-Related Activity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.014749262536873156</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"average variance extracted"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011799410029498525</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"common latent factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"online branding"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command can also returns CSV structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>"filename","key term","wikipedia_link"
+"article2016.pdf","Facebook","https://en.wikipedia.org/wiki/Facebook"
+"article2016.pdf","typology","https://en.wikipedia.org/wiki/typology"
+"article2016.pdf","social media","https://en.wikipedia.org/wiki/social_media"
+"article2016.pdf","consumer behavior","https://en.wikipedia.org/wiki/consumer_behavior"
+"article2016.pdf","average variance extracted","https://en.wikipedia.org/wiki/average_variance_extracted"
+"article2016.pdf","online branding","https://en.wikipedia.org/wiki/online_branding"
+"article2016.pdf","cluster analysis","https://en.wikipedia.org/wiki/cluster_analysis"
+"article2016.pdf","social networking sites","https://en.wikipedia.org/wiki/social_networking_sites"
+"article2016.pdf","brand manager","https://en.wikipedia.org/wiki/brand_manager"
+</code></pre></div>
+<p>This endpoint extracts key terms from a remote URL.
+The remote URL can resolve to a document type of any of the formats listed for the POST endpoint</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.scholarcy.com/api/keywords/extract</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>null</td>
+<td>Plain text content to be processed.</td>
+</tr>
+<tr>
+<td>start_page</td>
+<td>1</td>
+<td>Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>end_page</td>
+<td>null</td>
+<td>Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.</td>
+</tr>
+<tr>
+<td>external_metadata</td>
+<td>false</td>
+<td>If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>If true, map extracted key terms to their Wikipedia pages</td>
+</tr>
+<tr>
+<td>sampling</td>
+<td>representative</td>
+<td>For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.</td>
+</tr>
+<tr>
+<td>extract_snippets</td>
+<td>true</td>
+<td>If true, sample snippets from each section, otherwise, sample the full text.</td>
+</tr>
+<tr>
+<td>output_format</td>
+<td>json</td>
+<td>json or CSV.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h1 id='errors'>Errors</h1>
+<p>The Scholarcy API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The API endpoint requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The API endpoint could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to call the API with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t JSON.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re making too many API requests.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Timeout -- Serving your request took longer than expected. Please try again.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="python">python</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
