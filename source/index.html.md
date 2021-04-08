@@ -12,6 +12,9 @@ toc_footers:
 
 includes:
   - posters
+  - highlights
+  - metadata
+  - keywords
   - errors
 
 search: true

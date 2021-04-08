@@ -2,7 +2,7 @@
 
 These API endpoints will extract the information needed to populate data into your own poster-creation services, and will also generate a basic Powerpoint template for you to use as a starting point for editing.
 
-## POST a local file
+## POST a local file to generate a poster
 
 ```ruby
 require 'rest-client'
