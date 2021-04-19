@@ -19,7 +19,6 @@ request = RestClient::Request.new(
           :payload => {
             :multipart => true,
             :file => File.new(file_path, 'rb'),
-            :type => 'headline',
             :start_page => 24,
             :end_page => 37
           })
@@ -41,7 +40,6 @@ file_path = '/path/to/local/file.pdf'
 with open(file_path, 'rb') as file_data:
     file_payload = {
     'file': file_data,
-    'type': 'headline',
     'start_page': 24,
     'end_page': 37
     }
@@ -57,7 +55,6 @@ with open(file_path, 'rb') as file_data:
 curl "https://api.scholarcy.com/api/highlights/extract" \
   -H "Authorization: Bearer abcdefg" \
   -F "file=@/path/to/local/file.pdf" \
-  -F "type=headline" \
   -F "start_page=24" \
   -F "end_page=37"
 ```
