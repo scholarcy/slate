@@ -802,7 +802,6 @@ Remember to include your Authentication token with every request.
           <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
             <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
-            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
             <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
             <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
           <span class="p">})</span>
@@ -821,7 +820,6 @@ Remember to include your Authentication token with every request.
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
     <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
     <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
     <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
     <span class="p">}</span>
@@ -834,7 +832,6 @@ Remember to include your Authentication token with every request.
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/highlights/extract"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
-  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
 </code></pre></div>
@@ -1267,7 +1264,6 @@ Remember to include your Authentication token with every request.
           <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
             <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
-            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
             <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
             <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
           <span class="p">})</span>
@@ -1286,7 +1282,6 @@ Remember to include your Authentication token with every request.
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
     <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
     <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
     <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
     <span class="p">}</span>
@@ -1299,7 +1294,6 @@ Remember to include your Authentication token with every request.
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/metadata/extract"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
-  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
 </code></pre></div>
@@ -2039,7 +2033,6 @@ Remember to include your Authentication token with every request.
           <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
             <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
-            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'headline'</span><span class="p">,</span>
             <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span>
             <span class="ss">:end_page</span> <span class="o">=&gt;</span> <span class="mi">37</span>
           <span class="p">})</span>
@@ -2058,7 +2051,6 @@ Remember to include your Authentication token with every request.
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
     <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
     <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
     <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
     <span class="p">}</span>
@@ -2071,7 +2063,6 @@ Remember to include your Authentication token with every request.
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/keywords/extract"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
-  <span class="nt">-F</span> <span class="s2">"type=headline"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"start_page=24"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"end_page=37"</span>
 </code></pre></div>
