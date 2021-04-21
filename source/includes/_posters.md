@@ -1,6 +1,6 @@
 # Generate a Poster
 
-These API endpoints will extract the information needed to populate data into your own poster-creation services, and will also generate a basic Powerpoint template for you to use as a starting point for editing.
+The API endpoints at `https://api.scholarcy.com/api/posters/generate` will extract the information needed to populate data into your own poster-creation services, and will also generate a basic Powerpoint template for you to use as a starting point for editing.
 
 ## POST a local file to generate a poster
 
@@ -193,7 +193,6 @@ AUTH_TOKEN = 'abcdef' # Your API key
 API_DOMAIN = 'https://api.scholarcy.com'
 POST_ENDPOINT = API_DOMAIN + '/api/posters/generate'
 headers = {"Authorization": "Bearer " + AUTH_TOKEN}
-file_path = '/path/to/local/file.pdf'
 
 request = RestClient::Request.new(
           :method => :post,

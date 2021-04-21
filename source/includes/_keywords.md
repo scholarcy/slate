@@ -1,6 +1,6 @@
 # Extract Key Terms
 
-These API endpoints will pull out the key terms from an article.
+The API endpoints at `https://api.scholarcy.com/api/keywords/extract` will pull out the key terms from an article.
 
 ## POST a local file to extract key terms
 
@@ -193,16 +193,13 @@ AUTH_TOKEN = 'abcdef' # Your API key
 API_DOMAIN = 'https://api.scholarcy.com'
 POST_ENDPOINT = API_DOMAIN + '/api/keywords/extract'
 headers = {"Authorization": "Bearer " + AUTH_TOKEN}
-file_path = '/path/to/local/file.pdf'
 
 request = RestClient::Request.new(
-          :method => :post,
+          :method => :get,
           :url => POST_ENDPOINT,
           :headers => headers,
           :payload => {
-            :multipart => true,
             :url => 'https://www.nature.com/articles/s41746-019-0180-3',
-            :type => 'full',
             :start_page => 1
           })
 response = request.execute
@@ -219,14 +216,13 @@ API_DOMAIN = 'https://api.scholarcy.com'
 POST_ENDPOINT = API_DOMAIN + '/api/keywords/extract'
 headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
-file_payload = {
+payload = {
 'url': 'https://www.nature.com/articles/s41746-019-0180-3',
-'type': 'full',
 'start_page': 1
 }
-r = requests.post(POST_ENDPOINT,
+r = requests.get(POST_ENDPOINT,
       headers=headers,
-      files=file_payload,
+      params=payload,
       timeout=timeout)
 print(r.json())
 
@@ -236,7 +232,6 @@ print(r.json())
 curl "https://api.scholarcy.com/api/keywords/extract" \
   -H "Authorization: Bearer abcdefg" \
   -d "url=https://www.nature.com/articles/s41746-019-0180-3" \
-  -d "type=full" \
   -d "start_page=1"
 
 ```

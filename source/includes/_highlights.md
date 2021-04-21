@@ -1,6 +1,6 @@
 # Extract Highlights
 
-These API endpoints will pull out the key findings/highlights of an article and also provide a longer, extractive summary.
+The API endpoints at `https://api.scholarcy.com/api/highlights/extract` will pull out the key findings/highlights of an article and also provide a longer, extractive summary.
 
 ## POST a local file to extract highlights
 
@@ -207,16 +207,13 @@ AUTH_TOKEN = 'abcdef' # Your API key
 API_DOMAIN = 'https://api.scholarcy.com'
 POST_ENDPOINT = API_DOMAIN + '/api/highlights/extract'
 headers = {"Authorization": "Bearer " + AUTH_TOKEN}
-file_path = '/path/to/local/file.pdf'
 
 request = RestClient::Request.new(
-          :method => :post,
+          :method => :get,
           :url => POST_ENDPOINT,
           :headers => headers,
           :payload => {
-            :multipart => true,
             :url => 'https://www.nature.com/articles/s41746-019-0180-3',
-            :type => 'full',
             :start_page => 1
           })
 response = request.execute
@@ -233,14 +230,13 @@ API_DOMAIN = 'https://api.scholarcy.com'
 POST_ENDPOINT = API_DOMAIN + '/api/highlights/extract'
 headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
-file_payload = {
+payload = {
 'url': 'https://www.nature.com/articles/s41746-019-0180-3',
-'type': 'full',
 'start_page': 1
 }
-r = requests.post(POST_ENDPOINT,
+r = requests.get(POST_ENDPOINT,
       headers=headers,
-      files=file_payload,
+      params=payload,
       timeout=timeout)
 print(r.json())
 
@@ -250,7 +246,6 @@ print(r.json())
 curl "https://api.scholarcy.com/api/highlights/extract" \
   -H "Authorization: Bearer abcdefg" \
   -d "url=https://www.nature.com/articles/s41746-019-0180-3" \
-  -d "type=full" \
   -d "start_page=1"
 
 ```
