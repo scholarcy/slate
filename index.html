@@ -361,6 +361,17 @@
               </ul>
           </li>
           <li>
+            <a href="#generate-an-abstractive-synopsis" class="toc-h1 toc-link" data-title="Generate an Abstractive Synopsis">Generate an Abstractive Synopsis</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-a-local-file-to-generate-a-synopsis" class="toc-h2 toc-link" data-title="POST a local file to generate a synopsis">POST a local file to generate a synopsis</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-synopsis-from-a-url" class="toc-h2 toc-link" data-title="GET a synopsis from a URL">GET a synopsis from a URL</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -373,15 +384,25 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Scholarcy API. We have a number of endpoints for extracting machine-readable knowledge from documents in many formats.
-The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.</p>
+<p>Welcome to the Scholarcy APIs. We have two core API servies:</p>
 
-<p>We provid examples Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<ol>
+<li><strong>Metadata extraction API</strong> at <a href="https://api.scholarcy.com">https://api.scholarcy.com</a>
+This is a developer API that comprises a number of endpoints for extracting machine-readable knowledge as JSON data from documents in many formats.
+The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.</li>
+<li><strong>Synopsis API</strong> at <a href="https://summarizer.scholarcy.com/">https://summarizer.scholarcy.com/</a>
+This includes a web front end for testing and an developer endpoint at <code>/summarize</code></li>
+</ol>
+
+<p>We provide examples in Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Authentication headers must be sent with every request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code>
+<span class="c1"># 1. Metadata API:</span>
+
+<span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
 <span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
@@ -398,7 +419,30 @@ The service is optimised to work with research papers and articles, but should p
           <span class="p">})</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
 <span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>
+<span class="c1"># 2. Synopsis API:</span>
+
+<span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://summarizer.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/summarize'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code>
+<span class="c1"># 1. Metadata API:
+</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
 
 <span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
@@ -415,7 +459,30 @@ The service is optimised to work with research papers and articles, but should p
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code>
+<span class="c1"># 2. Synopsis API:
+</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://summarizer.scholarcy.com/'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/summarize'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>
+<span class="c"># 1. Metadata API:</span>
+
+<span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
   <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span>
@@ -423,22 +490,35 @@ curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <s
   curl <span class="s2">"https://api.scholarcy.com/api/posters/generate"</span> <span class="se">\</span>
     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
     <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>
+<span class="c"># 2. Synopsis API:</span>
+
+<span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"https://summarizer.scholarcy.com/summarize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span>
+
+  curl <span class="s2">"https://summarizer.scholarcy.com/summarize"</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span>
 </code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>abcdefg</code> with your API key.</p>
 </blockquote>
 
-<p>We currently have an open API which can be used without authentication for a limited number of
+<p>Our APIs are currently open and can be used without authentication for a limited number of
 documents per day with documents below 7MB in size.</p>
 
 <p>For unauthenticated use, please omit the <code>Authorization</code> header,
 or pass an empty string for the <code>Bearer</code> token.</p>
 
-<p>For full, authenticated use of the API, you may contact us for an API key - please see our <a href="https://www.scholarcy.com/pricing/">Pricing page</a>.</p>
+<p>For full, authenticated use of each API, you may contact us for an API key for either or both API services - please see our <a href="https://www.scholarcy.com/pricing/">Pricing page</a>.</p>
+
+<p>Each API service (metadata and synopsis) requires the purchase of a separate key.</p>
 
 <p>Soon you will be able to self-register an Scholarcy API key at our <a href="https://developers.scholarcy.com">developer portal</a>.</p>
 
-<p>The Scholarcy API expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>The Scholarcy APIs expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code>Authorization: Bearer abcdefg</code></p>
 
@@ -446,7 +526,7 @@ or pass an empty string for the <code>Bearer</code> token.</p>
 You must replace <code>abcdefg</code> with your personal API key.
 </aside>
 <h1 id='generate-a-poster'>Generate a Poster</h1>
-<p>These API endpoints will extract the information needed to populate data into your own poster-creation services, and will also generate a basic Powerpoint template for you to use as a starting point for editing.</p>
+<p>The API endpoints at <code>https://api.scholarcy.com/api/posters/generate</code> will extract the information needed to populate data into your own poster-creation services, and will also generate a basic Powerpoint template for you to use as a starting point for editing.</p>
 <h2 id='post-a-local-file-to-generate-a-poster'>POST a local file to generate a poster</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
@@ -643,7 +723,6 @@ Remember to include your Authentication token with every request.
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
 <span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/posters/generate'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
-<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
           <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
@@ -787,7 +866,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 Remember to include your Authentication token with every request.
 </aside>
 <h1 id='extract-highlights'>Extract Highlights</h1>
-<p>These API endpoints will pull out the key findings/highlights of an article and also provide a longer, extractive summary.</p>
+<p>The API endpoints at <code>https://api.scholarcy.com/api/highlights/extract</code> will pull out the key findings/highlights of an article and also provide a longer, extractive summary.</p>
 <h2 id='post-a-local-file-to-extract-highlights'>POST a local file to extract highlights</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
@@ -1050,16 +1129,13 @@ Remember to include your Authentication token with every request.
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
 <span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/highlights/extract'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
-<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
-          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span>
           <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
           <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
           <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
             <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
-            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
             <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
           <span class="p">})</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
@@ -1073,21 +1149,19 @@ Remember to include your Authentication token with every request.
 <span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/highlights/extract'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
 
-<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
-<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
 <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
       <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
       <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/highlights/extract"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
 
 </code></pre></div>
@@ -1249,7 +1323,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 Remember to include your Authentication token with every request.
 </aside>
 <h1 id='extract-structured-content'>Extract Structured Content</h1>
-<p>These API endpoints will convert a document into structured, machine-readable data in JSON format.</p>
+<p>The API endpoints at <code>https://api.scholarcy.com/api/metadata/extract</code> and <code>/api/metadata/basic</code> will convert a document into structured, machine-readable data in JSON format.</p>
 <h2 id='post-a-local-file-to-extract-content'>POST a local file to extract content</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
@@ -1728,16 +1802,13 @@ Remember to include your Authentication token with every request.
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
 <span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/metadata/extract'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
-<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
-          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span>
           <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
           <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
           <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
             <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
-            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
             <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
           <span class="p">})</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
@@ -1751,21 +1822,19 @@ Remember to include your Authentication token with every request.
 <span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/metadata/extract'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
 
-<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
-<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
 <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
       <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
       <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/metadata/extract"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
 
 </code></pre></div>
@@ -2018,7 +2087,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 Remember to include your Authentication token with every request.
 </aside>
 <h1 id='extract-key-terms'>Extract Key Terms</h1>
-<p>These API endpoints will pull out the key terms from an article.</p>
+<p>The API endpoints at <code>https://api.scholarcy.com/api/keywords/extract</code> will pull out the key terms from an article.</p>
 <h2 id='post-a-local-file-to-extract-key-terms'>POST a local file to extract key terms</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
@@ -2234,16 +2303,13 @@ Remember to include your Authentication token with every request.
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
 <span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/api/keywords/extract'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
-<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
-          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span>
           <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
           <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
           <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
             <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
-            <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">'full'</span><span class="p">,</span>
             <span class="ss">:start_page</span> <span class="o">=&gt;</span> <span class="mi">1</span>
           <span class="p">})</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
@@ -2257,21 +2323,19 @@ Remember to include your Authentication token with every request.
 <span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/keywords/extract'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
 
-<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
-<span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
 <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
       <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
       <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.scholarcy.com/api/keywords/extract"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"type=full"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"start_page=1"</span>
 
 </code></pre></div>
@@ -2417,6 +2481,408 @@ The remote URL can resolve to a document type of any of the formats listed for t
 <td>output_format</td>
 <td>json</td>
 <td>json or CSV.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h1 id='generate-an-abstractive-synopsis'>Generate an Abstractive Synopsis</h1>
+<p>The API endpoints at <code>https://summarizer.scholarcy.com/summarize</code> will generate a short synopsis (70-100 words) or a mini-review (around 150-300 words).</p>
+<h2 id='post-a-local-file-to-generate-a-synopsis'>POST a local file to generate a synopsis</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://summarizer.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/summarize'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">'/path/to/local/file.pdf'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:post</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:file</span> <span class="o">=&gt;</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">),</span>
+            <span class="ss">:wiki_links</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:format_summary</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://summarizer.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/summarize'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
+    <span class="s">'wiki_links'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'format_summary'</span><span class="p">:</span> <span class="bp">True</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+          <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://summarizer.scholarcy.com/summarize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"file=@/path/to/local/file.pdf"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"wiki_links=true"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s2">"format_summary=true"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"EPOSA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"European Project on OSteoArthritis"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"GPS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ISD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integrated Surface Database"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"OR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Researchers have used smartphone data to investigate the relationship between pain and weather conditions, and found that there is a small but significant relationship."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"physical activity"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/physical_activity"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"osteoarthritis"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/osteoarthritis"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atmospheric pressure"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/atmospheric_pressure"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rheumatoid arthritis"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/rheumatoid_arthritis"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Global_Positioning_System"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fibromyalgia"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/fibromyalgia"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arthritis"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/arthritis"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smartphone app"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/smartphone_app"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relative humidity"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/relative_humidity"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chronic pain"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/chronic_pain"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/odds_ratio"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parkinson disease"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Parkinson_disease"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joint pain"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/joint_pain"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wind speed"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/wind_speed"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cohort study"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cohort_study"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon, Anna L. Beukenhorst, Belay B. Yimer, Louise Cook, Antonio Gasparrini, Tal El-Hay, Bruce Hellman, Ben James, Ana M. Vicedo-Cabrera, Malcolm Maclure, Ricardo Silva, John Ainsworth, Huai Leng Pisaniello, Thomas House, Mark Lunt, Carolyn Gamble, Caroline Sanders, David M. Schultz, Jamie C. Sergeant, John McBeth (2019). How the weather affects the pain of citizen scientists using a smartphone app. npj Digital Medicine 2. https://www.nature.com/articles/s41746-019-0180-3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon et al."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nature.com/articles/s41746-019-0180-3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"readership_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"technical-readership-accurate"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;a class=</span><span class="se">\"</span><span class="s2">has-tooltip</span><span class="se">\"</span><span class="s2"> title=</span><span class="se">\"</span><span class="s2">Read the article</span><span class="se">\"</span><span class="s2"> target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2"> href=</span><span class="se">\"</span><span class="s2">https://www.nature.com/articles/s41746-019-0180-3</span><span class="se">\"</span><span class="s2">&gt;William Dixon et al. (2019)&lt;/a&gt; studied how the weather affects the pain of citizen scientists using a smartphone app. Weather has been thought to affect symptoms in patients with chronic disease since the time of Hippocrates over 2000 years ago.</span><span class="se">\n</span><span class="s2">Multivariable case-crossover analysis including the four state weather variables demonstrated that an increase in relative humidity was associated with a higher odds of a pain event with an OR of 1.139 (95% confidence interval 1.099</span><span class="se">\u</span><span class="s2">20131.181) per 10 percentage point increase.</span><span class="se">\n</span><span class="s2">This study has demonstrated that higher relative humidity and wind speed, and lower atmospheric pressure, were associated with increased pain severity in people with long-term pain conditions.</span><span class="se">\n</span><span class="s2">The </span><span class="se">\u</span><span class="s2">2018worst</span><span class="se">\u</span><span class="s2">2019 combination of weather variables would increase the odds of a pain event by just over 20% compared to an average day.&lt;br/&gt;&lt;br/&gt;There were 2658 patients involved in the research. Discussing potential improvements, </span><span class="se">\u</span><span class="s2">201cThere are potential limitations to this study.</span><span class="se">\n</span><span class="s2">It is possible only people with a strong belief in a weather</span><span class="se">\u</span><span class="s2">2013pain relationship participated.</span><span class="se">\n</span><span class="s2">Rain and cold weather were the most common pre-existing beliefs, authors say,</span><span class="se">\u</span><span class="s2">201d they admit. "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint generates a synopsis from a local file. File formats supported are:</p>
+
+<ul>
+<li>PDF (.pdf)</li>
+<li>Word (.docx)</li>
+<li>Rich Text (.rtf)</li>
+<li>Powerpoint (.pptx)</li>
+<li>BibTeX (.bib)</li>
+<li>RIS (.ris)</li>
+<li>XML (.xml)</li>
+<li>HTML (.html or .htm)</li>
+<li>Plain Text (.txt)</li>
+<li>LaTeX (.tex)</li>
+</ul>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://summarizer.scholarcy.com/summarize</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>null</td>
+<td>A file object.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document. Can be a DOI but must be qualified with a resolver domain, e.g. <a href="https://doi.org/10.1177/0846537120913497">https://doi.org/10.1177/0846537120913497</a></td>
+</tr>
+<tr>
+<td>input_text</td>
+<td>null</td>
+<td>You can pass a text string directly to the endpoint, instead of uploading a file or passing a URL.</td>
+</tr>
+<tr>
+<td>structured_summary</td>
+<td>false</td>
+<td>Take the document structure into account, considering specific sections such as Introduction, Background, Methods, Results, Discussion, Conclusion.</td>
+</tr>
+<tr>
+<td>summary_type</td>
+<td>combined</td>
+<td>Level of detail of summary: <code>overview</code>: abstractive synopsis of Scholarcy highlights. <code>detail</code>: abstractive synopsis of Scholarcy summary. <code>combined</code>: union of overview and detail. <code>merged</code>: an abstractive synopsis of the union of Scholarcy highlights and Scholarcy summary.</td>
+</tr>
+<tr>
+<td>focus_level</td>
+<td>4</td>
+<td>This internal hyperparameter controls whether the summary takes a narrow focus on a specific fact or a wider focus on multiple facts within the source. <code>4</code>: wide focus. <code>3</code>: medium focus. <code>2</code>: narrow focus. <code>1</code>: narrowest focus</td>
+</tr>
+<tr>
+<td>readership_level</td>
+<td>technical-readership- accurate</td>
+<td>This controls the level of language complexity and amount of paraphrasing in the output. <code>technical-readership-accurate</code>: output is for a technical/academic reader with a high level of factual accuracy in relation to the source text. <code>technical-readership-fast</code>: output is for a technical/academic reader and provides a little more paraphrasing, which may result in a slight loss in accuracy. However, it is 2x faster than <code>technical-readership-accurate</code>. <code>lay-readership-accurate</code>: output is for a lay/non-expert reader, with moderate paraphrasing and good level of accuracy in relation to the source text. <code>lay-readership-fast</code>: output is for a lay/non- expert reader, with much paraphrasing and reasonable level of accuracy in relation to the source text. However, it is 2x faster than <code>lay-readership-accurate</code>.</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>Map extracted key terms to Wikipedia entries.</td>
+</tr>
+<tr>
+<td>format_summary</td>
+<td>false</td>
+<td>Format the summary so it can be more easily used as part of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to include your Authentication token with every request.
+</aside>
+<h2 id='get-a-synopsis-from-a-url'>GET a synopsis from a URL</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
+<span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://summarizer.scholarcy.com'</span>
+<span class="no">POST_ENDPOINT</span> <span class="o">=</span> <span class="no">API_DOMAIN</span> <span class="o">+</span> <span class="s1">'/summarize'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"Bearer "</span> <span class="o">+</span> <span class="no">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">::</span><span class="no">Request</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+          <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span>
+          <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">POST_ENDPOINT</span><span class="p">,</span>
+          <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="n">headers</span><span class="p">,</span>
+          <span class="ss">:payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s1">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+            <span class="ss">:wiki_links</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">:format_summary</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+          <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">execute</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">AUTH_TOKEN</span> <span class="o">=</span> <span class="s">'abcdefg'</span> <span class="c1"># Your API key
+</span><span class="n">API_DOMAIN</span> <span class="o">=</span> <span class="s">'https://summarizer.scholarcy.com'</span>
+<span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/summarize'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
+<span class="s">'wiki_links'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+<span class="s">'format_summary'</span><span class="p">:</span> <span class="bp">True</span>
+<span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
+      <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+      <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+      <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://summarizer.scholarcy.com/summarize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefg"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"url=https://www.nature.com/articles/s41746-019-0180-3"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"wiki_links=true"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"format_summary=true"</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured as for the POST endpoint:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"EPOSA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"European Project on OSteoArthritis"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"GPS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ISD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integrated Surface Database"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"OR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Researchers have used smartphone data to investigate the relationship between pain and weather conditions, and found that there is a small but significant relationship."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"physical activity"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/physical_activity"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"osteoarthritis"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/osteoarthritis"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atmospheric pressure"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/atmospheric_pressure"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rheumatoid arthritis"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/rheumatoid_arthritis"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Global_Positioning_System"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fibromyalgia"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/fibromyalgia"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arthritis"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/arthritis"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smartphone app"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/smartphone_app"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relative humidity"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/relative_humidity"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chronic pain"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/chronic_pain"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/odds_ratio"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parkinson disease"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Parkinson_disease"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joint pain"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/joint_pain"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wind speed"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/wind_speed"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cohort study"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cohort_study"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon, Anna L. Beukenhorst, Belay B. Yimer, Louise Cook, Antonio Gasparrini, Tal El-Hay, Bruce Hellman, Ben James, Ana M. Vicedo-Cabrera, Malcolm Maclure, Ricardo Silva, John Ainsworth, Huai Leng Pisaniello, Thomas House, Mark Lunt, Carolyn Gamble, Caroline Sanders, David M. Schultz, Jamie C. Sergeant, John McBeth (2019). How the weather affects the pain of citizen scientists using a smartphone app. npj Digital Medicine 2. https://www.nature.com/articles/s41746-019-0180-3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon et al."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"citation_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nature.com/articles/s41746-019-0180-3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"readership_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"technical-readership-accurate"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;a class=</span><span class="se">\"</span><span class="s2">has-tooltip</span><span class="se">\"</span><span class="s2"> title=</span><span class="se">\"</span><span class="s2">Read the article</span><span class="se">\"</span><span class="s2"> target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2"> href=</span><span class="se">\"</span><span class="s2">https://www.nature.com/articles/s41746-019-0180-3</span><span class="se">\"</span><span class="s2">&gt;William Dixon et al. (2019)&lt;/a&gt; studied how the weather affects the pain of citizen scientists using a smartphone app. Weather has been thought to affect symptoms in patients with chronic disease since the time of Hippocrates over 2000 years ago.</span><span class="se">\n</span><span class="s2">Multivariable case-crossover analysis including the four state weather variables demonstrated that an increase in relative humidity was associated with a higher odds of a pain event with an OR of 1.139 (95% confidence interval 1.099</span><span class="se">\u</span><span class="s2">20131.181) per 10 percentage point increase.</span><span class="se">\n</span><span class="s2">This study has demonstrated that higher relative humidity and wind speed, and lower atmospheric pressure, were associated with increased pain severity in people with long-term pain conditions.</span><span class="se">\n</span><span class="s2">The </span><span class="se">\u</span><span class="s2">2018worst</span><span class="se">\u</span><span class="s2">2019 combination of weather variables would increase the odds of a pain event by just over 20% compared to an average day.&lt;br/&gt;&lt;br/&gt;There were 2658 patients involved in the research. Discussing potential improvements, </span><span class="se">\u</span><span class="s2">201cThere are potential limitations to this study.</span><span class="se">\n</span><span class="s2">It is possible only people with a strong belief in a weather</span><span class="se">\u</span><span class="s2">2013pain relationship participated.</span><span class="se">\n</span><span class="s2">Rain and cold weather were the most common pre-existing beliefs, authors say,</span><span class="se">\u</span><span class="s2">201d they admit. "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint generates synopsis from a remote URL.
+The remote URL can resolve to a document type of any of the formats listed for the POST endpoint</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://summarizer.scholarcy.com/summarize</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>null</td>
+<td>URL of public, open-access document. Can be a DOI but must be qualified with a resolver domain, e.g. <a href="https://doi.org/10.1177/0846537120913497">https://doi.org/10.1177/0846537120913497</a></td>
+</tr>
+<tr>
+<td>input_text</td>
+<td>null</td>
+<td>You can pass a text string directly to the endpoint, instead of uploading a file or passing a URL.</td>
+</tr>
+<tr>
+<td>structured_summary</td>
+<td>false</td>
+<td>Take the document structure into account, considering specific sections such as Introduction, Background, Methods, Results, Discussion, Conclusion.</td>
+</tr>
+<tr>
+<td>summary_type</td>
+<td>combined</td>
+<td>Level of detail of summary: <code>overview</code>: abstractive synopsis of Scholarcy highlights. <code>detail</code>: abstractive synopsis of Scholarcy summary. <code>combined</code>: union of overview and detail. <code>merged</code>: an abstractive synopsis of the union of Scholarcy highlights and Scholarcy summary.</td>
+</tr>
+<tr>
+<td>focus_level</td>
+<td>4</td>
+<td>This internal hyperparameter controls whether the summary takes a narrow focus on a specific fact or a wider focus on multiple facts within the source. <code>4</code>: wide focus. <code>3</code>: medium focus. <code>2</code>: narrow focus. <code>1</code>: narrowest focus</td>
+</tr>
+<tr>
+<td>readership_level</td>
+<td>technical-readership- accurate</td>
+<td>This controls the level of language complexity and amount of paraphrasing in the output. <code>technical-readership-accurate</code>: output is for a technical/academic reader with a high level of factual accuracy in relation to the source text. <code>technical-readership-fast</code>: output is for a technical/academic reader and provides a little more paraphrasing, which may result in a slight loss in accuracy. However, it is 2x faster than <code>technical-readership-accurate</code>. <code>lay-readership-accurate</code>: output is for a lay/non-expert reader, with moderate paraphrasing and good level of accuracy in relation to the source text. <code>lay-readership-fast</code>: output is for a lay/non- expert reader, with much paraphrasing and reasonable level of accuracy in relation to the source text. However, it is 2x faster than <code>lay-readership-accurate</code>.</td>
+</tr>
+<tr>
+<td>wiki_links</td>
+<td>false</td>
+<td>Map extracted key terms to Wikipedia entries.</td>
+</tr>
+<tr>
+<td>format_summary</td>
+<td>false</td>
+<td>Format the summary so it can be more easily used as part of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated</td>
 </tr>
 </tbody></table>
 
