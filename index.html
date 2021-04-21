@@ -361,7 +361,7 @@
               </ul>
           </li>
           <li>
-            <a href="#generate-an-abstractive-synopsis" class="toc-h1 toc-link" data-title="Generate an Abstractive Synopsis">Generate an Abstractive Synopsis</a>
+            <a href="#generate-a-synopsis" class="toc-h1 toc-link" data-title="Generate a Synopsis">Generate a Synopsis</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#post-a-local-file-to-generate-a-synopsis" class="toc-h2 toc-link" data-title="POST a local file to generate a synopsis">POST a local file to generate a synopsis</a>
@@ -391,7 +391,7 @@
 This is a developer API that comprises a number of endpoints for extracting machine-readable knowledge as JSON data from documents in many formats.
 The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.</li>
 <li><strong>Synopsis API</strong> at <a href="https://summarizer.scholarcy.com/">https://summarizer.scholarcy.com/</a>
-This includes a web front end for testing and an developer endpoint at <code>/summarize</code></li>
+This includes a web front end for testing and a developer endpoint at <code>/summarize</code></li>
 </ol>
 
 <p>We provide examples in Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
@@ -2487,8 +2487,8 @@ The remote URL can resolve to a document type of any of the formats listed for t
 <aside class="success">
 Remember to include your Authentication token with every request.
 </aside>
-<h1 id='generate-an-abstractive-synopsis'>Generate an Abstractive Synopsis</h1>
-<p>The API endpoints at <code>https://summarizer.scholarcy.com/summarize</code> will generate a short synopsis (70-100 words) or a mini-review (around 150-300 words).</p>
+<h1 id='generate-a-synopsis'>Generate a Synopsis</h1>
+<p>The API endpoints at <code>https://summarizer.scholarcy.com/summarize</code> will generate a short, abstractive synopsis (70-100 words) or a mini-review (around 150-300 words), depending on the parameters chosen.</p>
 <h2 id='post-a-local-file-to-generate-a-synopsis'>POST a local file to generate a synopsis</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://summarizer.scholarcy.com'</span>
@@ -2882,7 +2882,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 <tr>
 <td>format_summary</td>
 <td>false</td>
-<td>Format the summary so it can be more easily used as part of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated</td>
+<td>Format the summary into a &#39;mini review&#39; so it can be more easily used as the basis of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated.</td>
 </tr>
 </tbody></table>
 
