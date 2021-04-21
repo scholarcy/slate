@@ -31,7 +31,7 @@ Welcome to the Scholarcy APIs. We have two core API servies:
 This is a developer API that comprises a number of endpoints for extracting machine-readable knowledge as JSON data from documents in many formats.
 The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.
 2. **Synopsis API** at <https://summarizer.scholarcy.com/>
-This includes a web front end for testing and an developer endpoint at `/summarize`
+This includes a web front end for testing and a developer endpoint at `/summarize`
 
 We provide examples in Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 

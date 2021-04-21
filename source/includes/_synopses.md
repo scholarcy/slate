@@ -1,6 +1,6 @@
-# Generate an Abstractive Synopsis
+# Generate a Synopsis
 
-The API endpoints at `https://summarizer.scholarcy.com/summarize` will generate a short synopsis (70-100 words) or a mini-review (around 150-300 words).
+The API endpoints at `https://summarizer.scholarcy.com/summarize` will generate a short, abstractive synopsis (70-100 words) or a mini-review (around 150-300 words), depending on the parameters chosen.
 
 ## POST a local file to generate a synopsis
 
@@ -351,7 +351,7 @@ summary_type | combined | Level of detail of summary: `overview`: abstractive sy
 focus_level | 4 | This internal hyperparameter controls whether the summary takes a narrow focus on a specific fact or a wider focus on multiple facts within the source. `4`: wide focus. `3`: medium focus. `2`: narrow focus. `1`: narrowest focus
 readership_level | technical-readership- accurate | This controls the level of language complexity and amount of paraphrasing in the output. `technical-readership-accurate`: output is for a technical/academic reader with a high level of factual accuracy in relation to the source text. `technical-readership-fast`: output is for a technical/academic reader and provides a little more paraphrasing, which may result in a slight loss in accuracy. However, it is 2x faster than `technical-readership-accurate`. `lay-readership-accurate`: output is for a lay/non-expert reader, with moderate paraphrasing and good level of accuracy in relation to the source text. `lay-readership-fast`: output is for a lay/non- expert reader, with much paraphrasing and reasonable level of accuracy in relation to the source text. However, it is 2x faster than `lay-readership-accurate`.
 wiki_links | false | Map extracted key terms to Wikipedia entries.
-format_summary | false |  Format the summary so it can be more easily used as part of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated
+format_summary | false |  Format the summary into a 'mini review' so it can be more easily used as the basis of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated.
 
 <aside class="success">
 Remember to include your Authentication token with every request.
