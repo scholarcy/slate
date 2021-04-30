@@ -342,6 +342,59 @@ Remember to include your Authentication token with every request.
 </aside>
 
 
+### Output fields
+
+Field     | Description
+--------- | -----------
+filename  | The filename of the uploaded document, or input URL slug
+content_type | The file or URL MIME type
+metadata | Structured article metadata
+  title | Article title
+  author | List of authors
+  date | Article date
+  affiliations | Author affiliations
+  identifiers | Any identifier extracted from the document, such as DOI, ISBN, arXiv ID, or other identifier. <br /> If an open-access version of the paper is available, the URL to that version will be displayed here.
+  abstract | The original abstract, written by the author
+  keywords | Author-supplied keywords
+  references | The plain reference strings extracted from the end of the article, or from the footnotes
+  is_oa | Boolean flag if the document is open access or not. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497
+  oa_status | Open access status: closed, bronze, green, or gold. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497
+  emails | Email addresses of the authors
+  links | Any URLs identified in the document
+  author_conclusions | Free text conclusions stated in the document
+  funding | Funding statement structured as follows: `"award-group": [{"funding-source": "National Institutes of Health", "award-id": ["R43HL137469"] }]`
+  table_captions | Table captions
+  figure_captions | Figure captions
+  word_count | A range representing maximum and minimum estimated word count. <br/> The maximum includes appendices and supplementary information. <br /> The minimum includes the core article body text. <br /> Both exclude references and footnotes.
+sections | Snippets from each main section in the article
+  introduction, methods, results, conclusion | If section headings can be mapped to standard names such as Introduction, Methods, Results, Conclusions, these snippets are shown here
+  funding | Any funding statements
+  disclosures | Any disclosures of conflicts of interest
+  ethical_compliance | Any information about consent and ethical regulations
+  data_availability | Any information about data and code availability related to this study
+  limitations | Any discussion of study limitations
+  future_work | Any information about further research needed and future work
+  registrations | Any study registration identifiers
+structured_content | The section headings as they appear in the source document, along with their full section content.
+participants | Quantifiable information about the study subjects
+statistics | Information about statistical tests and analysis performed in the study
+populations | Quantifiable information about the population background
+keywords | A combination of the author-supplied keywords, plus new keywords or key terms extracted from the document
+keyword_relevance | keywords ranked by their relevance scores
+species | Any Latin species names detected
+summary | An extractive summary of the main points of the entire article.
+structured_summary | An extractive summary structured according to the main sections of the article.
+reference_links | Shown if reference parsing has been enabled. <br /> This contains links to the full text for each of the references in the paper
+facts | Subject-predicate-object statements expressed in the article
+claims | Claims made by the authors of the study
+findings | Any important, quantitative findings extracted from the document, such as statistically significant results
+key_statements | A longer set of important sentences, from which the `top_statements` are selected.
+top_statements | The top 3-7 key points in the document.  <br /> Typically, these highlights will include introductory and concluding information, as well as the main claims and findings of the article
+headline | A short, one line summary of the entire article. <br /> This headline attempts to express the main finding or main result of the paper.
+abbreviations | Abbreviations and their fully spelt out names, extracted from the document
+
+
+
 ## GET structured content from a URL
 
 ```ruby
