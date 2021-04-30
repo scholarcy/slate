@@ -1797,6 +1797,198 @@ Remember to include your Authentication token with every request.
 <aside class="success">
 Remember to include your Authentication token with every request.
 </aside>
+<h3 id='output-fields'>Output fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filename</td>
+<td>The filename of the uploaded document, or input URL slug</td>
+</tr>
+<tr>
+<td>content_type</td>
+<td>The file or URL MIME type</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>Structured article metadata</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Article title</td>
+</tr>
+<tr>
+<td>author</td>
+<td>List of authors</td>
+</tr>
+<tr>
+<td>date</td>
+<td>Article date</td>
+</tr>
+<tr>
+<td>affiliations</td>
+<td>Author affiliations</td>
+</tr>
+<tr>
+<td>identifiers</td>
+<td>Any identifier extracted from the document, such as DOI, ISBN, arXiv ID, or other identifier. <br /> If an open-access version of the paper is available, the URL to that version will be displayed here.</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td>The original abstract, written by the author</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>Author-supplied keywords</td>
+</tr>
+<tr>
+<td>references</td>
+<td>The plain reference strings extracted from the end of the article, or from the footnotes</td>
+</tr>
+<tr>
+<td>is_oa</td>
+<td>Boolean flag if the document is open access or not. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497</td>
+</tr>
+<tr>
+<td>oa_status</td>
+<td>Open access status: closed, bronze, green, or gold. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497</td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Email addresses of the authors</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Any URLs identified in the document</td>
+</tr>
+<tr>
+<td>author_conclusions</td>
+<td>Free text conclusions stated in the document</td>
+</tr>
+<tr>
+<td>funding</td>
+<td>Funding statement structured as follows: <code>&quot;award-group&quot;: [{&quot;funding-source&quot;: &quot;National Institutes of Health&quot;, &quot;award-id&quot;: [&quot;R43HL137469&quot;] }]</code></td>
+</tr>
+<tr>
+<td>table_captions</td>
+<td>Table captions</td>
+</tr>
+<tr>
+<td>figure_captions</td>
+<td>Figure captions</td>
+</tr>
+<tr>
+<td>word_count</td>
+<td>A range representing maximum and minimum estimated word count. <br/> The maximum includes appendices and supplementary information. <br /> The minimum includes the core article body text. <br /> Both exclude references and footnotes.</td>
+</tr>
+<tr>
+<td>sections</td>
+<td>Snippets from each main section in the article</td>
+</tr>
+<tr>
+<td>introduction, methods, results, conclusion</td>
+<td>If section headings can be mapped to standard names such as Introduction, Methods, Results, Conclusions, these snippets are shown here</td>
+</tr>
+<tr>
+<td>funding</td>
+<td>Any funding statements</td>
+</tr>
+<tr>
+<td>disclosures</td>
+<td>Any disclosures of conflicts of interest</td>
+</tr>
+<tr>
+<td>ethical_compliance</td>
+<td>Any information about consent and ethical regulations</td>
+</tr>
+<tr>
+<td>data_availability</td>
+<td>Any information about data and code availability related to this study</td>
+</tr>
+<tr>
+<td>limitations</td>
+<td>Any discussion of study limitations</td>
+</tr>
+<tr>
+<td>future_work</td>
+<td>Any information about further research needed and future work</td>
+</tr>
+<tr>
+<td>registrations</td>
+<td>Any study registration identifiers</td>
+</tr>
+<tr>
+<td>structured_content</td>
+<td>The section headings as they appear in the source document, along with their full section content.</td>
+</tr>
+<tr>
+<td>participants</td>
+<td>Quantifiable information about the study subjects</td>
+</tr>
+<tr>
+<td>statistics</td>
+<td>Information about statistical tests and analysis performed in the study</td>
+</tr>
+<tr>
+<td>populations</td>
+<td>Quantifiable information about the population background</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>A combination of the author-supplied keywords, plus new keywords or key terms extracted from the document</td>
+</tr>
+<tr>
+<td>keyword_relevance</td>
+<td>keywords ranked by their relevance scores</td>
+</tr>
+<tr>
+<td>species</td>
+<td>Any Latin species names detected</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>An extractive summary of the main points of the entire article.</td>
+</tr>
+<tr>
+<td>structured_summary</td>
+<td>An extractive summary structured according to the main sections of the article.</td>
+</tr>
+<tr>
+<td>reference_links</td>
+<td>Shown if reference parsing has been enabled. <br /> This contains links to the full text for each of the references in the paper</td>
+</tr>
+<tr>
+<td>facts</td>
+<td>Subject-predicate-object statements expressed in the article</td>
+</tr>
+<tr>
+<td>claims</td>
+<td>Claims made by the authors of the study</td>
+</tr>
+<tr>
+<td>findings</td>
+<td>Any important, quantitative findings extracted from the document, such as statistically significant results</td>
+</tr>
+<tr>
+<td>key_statements</td>
+<td>A longer set of important sentences, from which the <code>top_statements</code> are selected.</td>
+</tr>
+<tr>
+<td>top_statements</td>
+<td>The top 3-7 key points in the document.  <br /> Typically, these highlights will include introductory and concluding information, as well as the main claims and findings of the article</td>
+</tr>
+<tr>
+<td>headline</td>
+<td>A short, one line summary of the entire article. <br /> This headline attempts to express the main finding or main result of the paper.</td>
+</tr>
+<tr>
+<td>abbreviations</td>
+<td>Abbreviations and their fully spelt out names, extracted from the document</td>
+</tr>
+</tbody></table>
 <h2 id='get-structured-content-from-a-url'>GET structured content from a URL</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://api.scholarcy.com'</span>
