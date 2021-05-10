@@ -14,6 +14,7 @@ includes:
   - posters
   - highlights
   - metadata
+  - references
   - keywords
   - synopses
   - errors
@@ -25,13 +26,15 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Scholarcy APIs. We have two core API servies:
+Welcome to the Scholarcy APIs. We have three core API servies:
 
 1. **Metadata extraction API** at <https://api.scholarcy.com>
 This is a developer API that comprises a number of endpoints for extracting machine-readable knowledge as JSON data from documents in many formats.
 The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.
 2. **Synopsis API** at <https://summarizer.scholarcy.com/>
 This includes a web front end for testing and a developer endpoint at `/summarize`
+3. **References API** at <https://ref.scholarcy.com/>
+This is a free, public, developer API that comprises endpoints for extracting references as JSON, XML, BibTeX, RIS, and CSV from PDF, Word and plain text documents. This service can be deployed for you on more powerful servers for use at scale.
 
 We provide examples in Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
@@ -71,6 +74,29 @@ require 'rest-client'
 AUTH_TOKEN = 'abcdef' # Your API key
 API_DOMAIN = 'https://summarizer.scholarcy.com'
 POST_ENDPOINT = API_DOMAIN + '/summarize'
+headers = {"Authorization": "Bearer " + AUTH_TOKEN}
+file_path = '/path/to/local/file.pdf'
+
+request = RestClient::Request.new(
+          :method => :post,
+          :url => POST_ENDPOINT,
+          :headers => headers,
+          :payload => {
+            :multipart => true,
+            :file => File.new(file_path, 'rb')
+          })
+response = request.execute
+puts(response.body)
+```
+
+```ruby
+
+# 3. References API:
+
+require 'rest-client'
+AUTH_TOKEN = 'abcdef' # Your API key
+API_DOMAIN = 'https://ref.scholarcy.com'
+POST_ENDPOINT = API_DOMAIN + '/api/references/download'
 headers = {"Authorization": "Bearer " + AUTH_TOKEN}
 file_path = '/path/to/local/file.pdf'
 
@@ -133,6 +159,29 @@ with open(file_path, 'rb') as file_data:
     print(r.json())
 ```
 
+```python
+
+# 3. References API:
+
+import requests
+timeout = 30
+
+AUTH_TOKEN = 'abcdefg' # Your API key
+API_DOMAIN = 'https://ref.scholarcy.com'
+POST_ENDPOINT = API_DOMAIN + '/api/references/download'
+headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
+
+file_path = '/path/to/local/file.pdf'
+
+with open(file_path, 'rb') as file_data:
+    file_payload = {'file': file_data}
+    r = requests.post(POST_ENDPOINT,
+          headers=headers,
+          files=file_payload,
+          timeout=timeout)
+    print(r.json())
+```
+
 
 ```shell
 
@@ -160,6 +209,20 @@ curl "https://summarizer.scholarcy.com/summarize" \
   curl "https://summarizer.scholarcy.com/summarize" \
     -H "Authorization: Bearer abcdefg" \
     -d "url=https://www.nature.com/articles/s41746-019-0180-3"
+```
+
+```shell
+
+# 3. References API:
+
+# With shell, you can just pass the correct header with each request
+curl "https://ref.scholarcy.com/api/references/download" \
+  -H "Authorization: Bearer abcdefg" \
+  -F "file=@/path/to/local/file.pdf"
+
+  curl "https://ref.scholarcy.com/api/references/download" \
+    -H "Authorization: Bearer abcdefg" \
+    -d "url=https://www.nature.com/articles/s41746-019-0180-3.pdf"
 ```
 
 > Make sure to replace `abcdefg` with your API key.
