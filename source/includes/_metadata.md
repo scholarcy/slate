@@ -348,25 +348,34 @@ Field     | Description
 --------- | -----------
 filename  | The filename of the uploaded document, or input URL slug
 content_type | The file or URL MIME type
-metadata | Structured article metadata
+**metadata** | Structured article metadata
+  message | Any error or status messages
   title | Article title
   author | List of authors
+  pages | Number of pages in the document
   date | Article date
   affiliations | Author affiliations
+  journal | Journal title (from CrossRef)
+  volume | Journal volume (from CrossRef)
+  page | Journal page range (from CrossRef)
   identifiers | Any identifier extracted from the document, such as DOI, ISBN, arXiv ID, or other identifier. <br /> If an open-access version of the paper is available, the URL to that version will be displayed here.
-  abstract | The original abstract, written by the author
+  abstract | The author-written abstract, if available, or a proxy for the abstract, such as background, introduction, preface etc.
   keywords | Author-supplied keywords
   references | The plain reference strings extracted from the end of the article, or from the footnotes
-  is_oa | Boolean flag if the document is open access or not. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497
-  oa_status | Open access status: closed, bronze, green, or gold. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497
   emails | Email addresses of the authors
+  type | Article type: journal-article, book-chapter, preprint, web-page, review-article, case-study, report
+  references_ris | RIS parse of the references
   links | Any URLs identified in the document
-  author_conclusions | Free text conclusions stated in the document
+  author_conclusions | Author-stated conclusions/takeaways
   funding | Funding statement structured as follows: `"award-group": [{"funding-source": "National Institutes of Health", "award-id": ["R43HL137469"] }]`
   table_captions | Table captions
   figure_captions | Figure captions
+  tables_url | Link to download the tables as Excel
+  figure_urls | List of links to download extracted images as PNG files
   word_count | A range representing maximum and minimum estimated word count. <br/> The maximum includes appendices and supplementary information. <br /> The minimum includes the core article body text. <br /> Both exclude references and footnotes.
-sections | Snippets from each main section in the article
+  is_oa | Boolean flag if the document is open access or not. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497
+  oa_status | Open access status: closed, bronze, green, or gold. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497
+**sections** | Snippets from each main section in the article
   introduction, methods, results, conclusion | If section headings can be mapped to standard names such as Introduction, Methods, Results, Conclusions, these snippets are shown here
   funding | Any funding statements
   disclosures | Any disclosures of conflicts of interest
