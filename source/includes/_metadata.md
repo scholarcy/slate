@@ -358,6 +358,7 @@ content_type | The file or URL MIME type
   journal | Journal title (from CrossRef)
   volume | Journal volume (from CrossRef)
   page | Journal page range (from CrossRef)
+  cited_by | Citation count (from CrossRef)
   identifiers | Any identifier extracted from the document, such as DOI, ISBN, arXiv ID, or other identifier. <br /> If an open-access version of the paper is available, the URL to that version will be displayed here.
   abstract | The author-written abstract, if available, or a proxy for the abstract, such as background, introduction, preface etc.
   keywords | Author-supplied keywords
