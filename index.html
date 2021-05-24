@@ -1883,8 +1883,12 @@ Remember to include your Authentication token with every request.
 <td>The file or URL MIME type</td>
 </tr>
 <tr>
-<td>metadata</td>
+<td><strong>metadata</strong></td>
 <td>Structured article metadata</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Any error or status messages</td>
 </tr>
 <tr>
 <td>title</td>
@@ -1895,6 +1899,10 @@ Remember to include your Authentication token with every request.
 <td>List of authors</td>
 </tr>
 <tr>
+<td>pages</td>
+<td>Number of pages in the document</td>
+</tr>
+<tr>
 <td>date</td>
 <td>Article date</td>
 </tr>
@@ -1903,12 +1911,24 @@ Remember to include your Authentication token with every request.
 <td>Author affiliations</td>
 </tr>
 <tr>
+<td>journal</td>
+<td>Journal title (from CrossRef)</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>Journal volume (from CrossRef)</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Journal page range (from CrossRef)</td>
+</tr>
+<tr>
 <td>identifiers</td>
 <td>Any identifier extracted from the document, such as DOI, ISBN, arXiv ID, or other identifier. <br /> If an open-access version of the paper is available, the URL to that version will be displayed here.</td>
 </tr>
 <tr>
 <td>abstract</td>
-<td>The original abstract, written by the author</td>
+<td>The author-written abstract, if available, or a proxy for the abstract, such as background, introduction, preface etc.</td>
 </tr>
 <tr>
 <td>keywords</td>
@@ -1919,16 +1939,16 @@ Remember to include your Authentication token with every request.
 <td>The plain reference strings extracted from the end of the article, or from the footnotes</td>
 </tr>
 <tr>
-<td>is_oa</td>
-<td>Boolean flag if the document is open access or not. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497</td>
-</tr>
-<tr>
-<td>oa_status</td>
-<td>Open access status: closed, bronze, green, or gold. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497</td>
-</tr>
-<tr>
 <td>emails</td>
 <td>Email addresses of the authors</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Article type: journal-article, book-chapter, preprint, web-page, review-article, case-study, report</td>
+</tr>
+<tr>
+<td>references_ris</td>
+<td>RIS parse of the references</td>
 </tr>
 <tr>
 <td>links</td>
@@ -1936,7 +1956,7 @@ Remember to include your Authentication token with every request.
 </tr>
 <tr>
 <td>author_conclusions</td>
-<td>Free text conclusions stated in the document</td>
+<td>Author-stated conclusions/takeaways</td>
 </tr>
 <tr>
 <td>funding</td>
@@ -1951,11 +1971,27 @@ Remember to include your Authentication token with every request.
 <td>Figure captions</td>
 </tr>
 <tr>
+<td>tables_url</td>
+<td>Link to download the tables as Excel</td>
+</tr>
+<tr>
+<td>figure_urls</td>
+<td>List of links to download extracted images as PNG files</td>
+</tr>
+<tr>
 <td>word_count</td>
 <td>A range representing maximum and minimum estimated word count. <br/> The maximum includes appendices and supplementary information. <br /> The minimum includes the core article body text. <br /> Both exclude references and footnotes.</td>
 </tr>
 <tr>
-<td>sections</td>
+<td>is_oa</td>
+<td>Boolean flag if the document is open access or not. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497</td>
+</tr>
+<tr>
+<td>oa_status</td>
+<td>Open access status: closed, bronze, green, or gold. <br /> This flag is only present if the input is a DOI URL, e.g. https://doi.org/10.1177/0846537120913497</td>
+</tr>
+<tr>
+<td><strong>sections</strong></td>
 <td>Snippets from each main section in the article</td>
 </tr>
 <tr>
