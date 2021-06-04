@@ -3464,6 +3464,10 @@ Remember to include your Authentication token with every request.
 </aside>
 <h1 id='generate-a-synopsis'>Generate a Synopsis</h1>
 <p>The API endpoints at <code>https://summarizer.scholarcy.com/summarize</code> will generate a short, abstractive synopsis (70-100 words) or a mini-review (around 150-300 words), depending on the parameters chosen.</p>
+
+<p>By default, output is in JSON format.</p>
+
+<p>Alternatively, you can receive output in HTML format if you pass an <code>Accept: text/html</code> header with your request.</p>
 <h2 id='post-a-local-file-to-generate-a-synopsis'>POST a local file to generate a synopsis</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="s1">'abcdef'</span> <span class="c1"># Your API key</span>
 <span class="no">API_DOMAIN</span> <span class="o">=</span> <span class="s1">'https://summarizer.scholarcy.com'</span>
