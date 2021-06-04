@@ -2,6 +2,10 @@
 
 The API endpoints at `https://summarizer.scholarcy.com/summarize` will generate a short, abstractive synopsis (70-100 words) or a mini-review (around 150-300 words), depending on the parameters chosen.
 
+By default, output is in JSON format.
+
+Alternatively, you can receive output in HTML format if you pass an `Accept: text/html` header with your request.
+
 ## POST a local file to generate a synopsis
 
 ```ruby
