@@ -3673,6 +3673,11 @@ Remember to include your Authentication token with every request.
 <td>false</td>
 <td>Format the summary so it can be more easily used as part of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated</td>
 </tr>
+<tr>
+<td>headline_type</td>
+<td>verbatim</td>
+<td>Determines how the headline is generated. <code>verbatim</code> (default): uses the main finding extracted directly from the paper. The other options are as for <code>readership_level</code>, i.e. <code>technical-readership-accurate</code>, <code>technical-readership-fast</code>, <code>lay-readership-accurate</code> and <code>lay-readership-fast</code>. If <code>format_summary</code> is <code>true</code>, then <code>headline_type</code> defaults to <code>lay-readership-accurate</code> unless otherwise specified.</td>
+</tr>
 </tbody></table>
 
 <aside class="success">
@@ -3862,6 +3867,11 @@ The remote URL can resolve to a document type of any of the formats listed for t
 <td>format_summary</td>
 <td>false</td>
 <td>Format the summary into a &#39;mini review&#39; so it can be more easily used as the basis of a referenced report: 1) Personal pronouns referring to the authors are replaced with the author names. 2) The summary is correctly cited with author and date. 3) A formatted reference to the source is generated.</td>
+</tr>
+<tr>
+<td>headline_type</td>
+<td>verbatim</td>
+<td>Determines how the headline is generated. <code>verbatim</code> (default): uses the main finding extracted directly from the paper. The other options are as for <code>readership_level</code>, i.e. <code>technical-readership-accurate</code>, <code>technical-readership-fast</code>, <code>lay-readership-accurate</code> and <code>lay-readership-fast</code>. If <code>format_summary</code> is <code>true</code>, then <code>headline_type</code> defaults to <code>lay-readership-accurate</code> unless otherwise specified.</td>
 </tr>
 </tbody></table>
 
