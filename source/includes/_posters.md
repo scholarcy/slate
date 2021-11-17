@@ -38,16 +38,13 @@ headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
 file_path = '/path/to/local/file.pdf'
 
+params = {'type': 'headline', 'start_page': 24, 'end_page': 37}
 with open(file_path, 'rb') as file_data:
-    file_payload = {
-    'file': file_data,
-    'type': 'headline',
-    'start_page': 24,
-    'end_page': 37
-    }
+    file_payload = {'file': file_data}
     r = requests.post(POST_ENDPOINT,
           headers=headers,
           files=file_payload,
+          data=params,
           timeout=timeout)
     print(r.json())
 
@@ -218,14 +215,14 @@ API_DOMAIN = 'https://api.scholarcy.com'
 POST_ENDPOINT = API_DOMAIN + '/api/posters/generate'
 headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
-file_payload = {
+params = {
 'url': 'https://www.nature.com/articles/s41746-019-0180-3',
 'type': 'full',
 'start_page': 1
 }
 r = requests.post(POST_ENDPOINT,
       headers=headers,
-      files=file_payload,
+      data=params,
       timeout=timeout)
 print(r.json())
 

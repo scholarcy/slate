@@ -37,15 +37,13 @@ headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
 file_path = '/path/to/local/file.pdf'
 
+params = {'start_page': 24, 'end_page': 37}
 with open(file_path, 'rb') as file_data:
-    file_payload = {
-    'file': file_data,
-    'start_page': 24,
-    'end_page': 37
-    }
+    file_payload = {'file': file_data}
     r = requests.post(POST_ENDPOINT,
           headers=headers,
           files=file_payload,
+          data=params,
           timeout=timeout)
     print(r.json())
 

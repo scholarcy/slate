@@ -41,15 +41,13 @@ headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
 file_path = '/path/to/local/file.pdf'
 
+params = {'wiki_links': True, 'format_summary': True}
 with open(file_path, 'rb') as file_data:
-    file_payload = {
-    'file': file_data,
-    'wiki_links': True,
-    'format_summary': True
-    }
+    file_payload = {'file': file_data}
     r = requests.post(POST_ENDPOINT,
           headers=headers,
           files=file_payload,
+          data=params,
           timeout=timeout)
     print(r.json())
 

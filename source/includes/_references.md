@@ -52,15 +52,13 @@ headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
 file_path = '/path/to/local/file.pdf'
 
+params = {'reference_format': 'jats', 'reference_style': 'ensemble'}
 with open(file_path, 'rb') as file_data:
-    file_payload = {
-    'file': file_data,
-    'reference_format': 'jats',
-    'reference_style': 'ensemble'
-    }
+    file_payload = {'file': file_data}
     r = requests.post(POST_ENDPOINT,
           headers=headers,
           files=file_payload,
+          data=params,
           timeout=timeout)
     print(r.json())
 
@@ -306,15 +304,13 @@ headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
 
 file_path = '/path/to/local/file.pdf'
 
+params = {'reference_style': 'ensemble', 'resolve_references': True}
 with open(file_path, 'rb') as file_data:
-    file_payload = {
-    'file': file_data,
-    'reference_style': 'ensemble',
-    'resolve_references': True
-    }
+    file_payload = {'file': file_data}
     r = requests.post(POST_ENDPOINT,
           headers=headers,
           files=file_payload,
+          data=params,
           timeout=timeout)
     print(r.json())
 
