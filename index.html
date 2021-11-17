@@ -627,16 +627,13 @@ You must replace <code>abcdefg</code> with your personal API key.
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
 
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span> <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
-    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'type'</span><span class="p">:</span> <span class="s">'headline'</span><span class="p">,</span>
-    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
-    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
-    <span class="p">}</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
           <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -815,14 +812,14 @@ Remember to include your Authentication token with every request.
 <span class="n">POST_ENDPOINT</span> <span class="o">=</span> <span class="n">API_DOMAIN</span> <span class="o">+</span> <span class="s">'/api/posters/generate'</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer '</span> <span class="o">+</span> <span class="n">AUTH_TOKEN</span><span class="p">}</span>
 
-<span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s">'url'</span><span class="p">:</span> <span class="s">'https://www.nature.com/articles/s41746-019-0180-3'</span><span class="p">,</span>
 <span class="s">'type'</span><span class="p">:</span> <span class="s">'full'</span><span class="p">,</span>
 <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
       <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-      <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+      <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
       <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -966,15 +963,13 @@ Remember to include your Authentication token with every request.
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
 
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'wiki_links'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'reference_links'</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
-    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
-    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
-    <span class="p">}</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
           <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -1423,15 +1418,13 @@ Remember to include your Authentication token with every request.
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
 
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
-    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
-    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
-    <span class="p">}</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
           <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -2436,15 +2429,13 @@ Remember to include your Authentication token with every request.
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
 
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'reference_format'</span><span class="p">:</span> <span class="s">'jats'</span><span class="p">,</span> <span class="s">'reference_style'</span><span class="p">:</span> <span class="s">'ensemble'</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
-    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'reference_format'</span><span class="p">:</span> <span class="s">'jats'</span><span class="p">,</span>
-    <span class="s">'reference_style'</span><span class="p">:</span> <span class="s">'ensemble'</span>
-    <span class="p">}</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
           <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -2729,15 +2720,13 @@ Remember to include your Authentication token with every request.
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
 
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'reference_style'</span><span class="p">:</span> <span class="s">'ensemble'</span><span class="p">,</span> <span class="s">'resolve_references'</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
-    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'reference_style'</span><span class="p">:</span> <span class="s">'ensemble'</span><span class="p">,</span>
-    <span class="s">'resolve_references'</span><span class="p">:</span> <span class="bp">True</span>
-    <span class="p">}</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
           <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -3092,15 +3081,13 @@ Remember to include your Authentication token with every request.
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
 
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
-    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'start_page'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
-    <span class="s">'end_page'</span><span class="p">:</span> <span class="mi">37</span>
-    <span class="p">}</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
           <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -3497,15 +3484,13 @@ Remember to include your Authentication token with every request.
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s">'/path/to/local/file.pdf'</span>
 
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'wiki_links'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'format_summary'</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_data</span><span class="p">:</span>
-    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">,</span>
-    <span class="s">'wiki_links'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">'format_summary'</span><span class="p">:</span> <span class="bp">True</span>
-    <span class="p">}</span>
+    <span class="n">file_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">'file'</span><span class="p">:</span> <span class="n">file_data</span><span class="p">}</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_ENDPOINT</span><span class="p">,</span>
           <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
           <span class="n">files</span><span class="o">=</span><span class="n">file_payload</span><span class="p">,</span>
+          <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
           <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
