@@ -166,7 +166,7 @@ This endpoint extracts highlights from a local file. File formats supported are:
 
 ### HTTP Request
 
-`POST http://api.scholarcy.com/api/highlights/extract`
+`POST https://api.scholarcy.com/api/highlights/extract`
 
 ### Query Parameters
 
@@ -310,7 +310,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### HTTP Request
 
-`GET http://api.scholarcy.com/api/highlights/extract`
+`GET https://api.scholarcy.com/api/highlights/extract`
 
 ### Query Parameters
 

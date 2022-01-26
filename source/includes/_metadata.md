@@ -292,7 +292,7 @@ This endpoint extracts structured content from a local file. File formats suppor
 
 ### HTTP Request
 
-`POST http://api.scholarcy.com/api/metadata/extract`
+`POST https://api.scholarcy.com/api/metadata/extract`
 
 ### Query Parameters
 
@@ -517,7 +517,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### HTTP Request
 
-`GET http://api.scholarcy.com/api/metadata/extract`
+`GET https://api.scholarcy.com/api/metadata/extract`
 
 ### Query Parameters
 

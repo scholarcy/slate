@@ -160,7 +160,7 @@ This endpoint extracts key terms from a local file. File formats supported are:
 
 ### HTTP Request
 
-`POST http://api.scholarcy.com/api/keywords/extract`
+`POST https://api.scholarcy.com/api/keywords/extract`
 
 ### Query Parameters
 
@@ -328,7 +328,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### HTTP Request
 
-`GET http://api.scholarcy.com/api/keywords/extract`
+`GET https://api.scholarcy.com/api/keywords/extract`
 
 ### Query Parameters
 

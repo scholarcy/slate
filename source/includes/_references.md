@@ -133,7 +133,7 @@ This endpoint extracts references in the chosen output format from a local file.
 
 ### HTTP Request
 
-`POST http://ref.scholarcy.com/api/references/download`
+`POST https://ref.scholarcy.com/api/references/download`
 
 ### Query Parameters
 
@@ -248,7 +248,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### HTTP Request
 
-`GET http://ref.scholarcy.com/api/references/download`
+`GET https://ref.scholarcy.com/api/references/download`
 
 ### Query Parameters
 
@@ -423,7 +423,7 @@ File formats supported are:
 
 ### HTTP Request
 
-`POST http://ref.scholarcy.com/api/references/extract`
+`POST https://ref.scholarcy.com/api/references/extract`
 
 ### Query Parameters
 
@@ -586,7 +586,7 @@ The remote URL can resolve to a document type in any of the formats listed for t
 
 ### HTTP Request
 
-`GET http://ref.scholarcy.com/api/references/extract`
+`GET https://ref.scholarcy.com/api/references/extract`
 
 ### Query Parameters
 

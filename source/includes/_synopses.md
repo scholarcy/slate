@@ -168,7 +168,7 @@ This endpoint generates a synopsis from a local file. File formats supported are
 
 ### HTTP Request
 
-`POST http://summarizer.scholarcy.com/summarize`
+`POST https://summarizer.scholarcy.com/summarize`
 
 ### Query Parameters
 
@@ -341,7 +341,7 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### HTTP Request
 
-`GET http://summarizer.scholarcy.com/summarize`
+`GET https://summarizer.scholarcy.com/summarize`
 
 ### Query Parameters
 
