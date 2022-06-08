@@ -182,6 +182,7 @@ wiki_links | false | If true, map extracted key terms to their Wikipedia pages
 reference_links | false | If true, parse and link each reference to its full text location
 replace_pronouns | false | If true, replace first-person pronouns with third-person mentions (the author(s)?, they).
 key_points | 5 | The number of key points/key takeaway items to extract.
+focus_terms | null | Semicolon separated list of terms around which the extracted highlights will focus.
 sampling | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.
 extract_snippets | true | If true, sample snippets from each section, otherwise, sample the full text.
 add_background_info | false | If true, generate an introductory sentence. Useful generating an abstract from an article.
@@ -325,6 +326,7 @@ wiki_links | false | If true, map extracted key terms to their Wikipedia pages
 reference_links | false | If true, parse and link each reference to its full text location
 replace_pronouns | false | If true, replace first-person pronouns with third-person mentions (the author(s)?, they).
 key_points | 5 | The number of key points/key takeaway items to extract.
+focus_terms | null | Semicolon separated list of terms around which the extracted highlights will focus.
 sampling | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.
 extract_snippets | true | If true, sample snippets from each section, otherwise, sample the full text.
 add_background_info | false | If true, generate an introductory sentence. Useful generating an abstract from an article.

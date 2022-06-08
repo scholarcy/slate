@@ -322,6 +322,7 @@ wiki_links | false | If true, map extracted key terms to their Wikipedia pages.
 extract_facts | true | Extract SVO-style factual statements from the article.
 extract_claims | true | Extract specific claims made by the article.
 key_points | 5 | The number of key points/key takeaway items to extract.
+focus_terms | null | Semicolon separated list of terms around which the extracted highlights will focus.
 citation_contexts | false | If true, extract the inline citation contexts (preceding and current sentences).
 inline_citation_links | false | If true, link inline citations to their identifiers in the references.
 extract_pico | true | Extract population, intervention, control, outcome data.
@@ -351,9 +352,11 @@ content_type | The file or URL MIME type
   title | Article title
   author | List of authors
   pages | Number of pages in the document
-  date | Article date
+  date | Article year
+  full_date | Article date string in ISO 8601 format (where available)
   affiliations | Author affiliations
   journal | Journal title (from CrossRef)
+  abbreviated_journal | Abbreviated journal title (where available)
   volume | Journal volume (from CrossRef)
   page | Journal page range (from CrossRef)
   cited_by | Citation count (from CrossRef)
@@ -546,6 +549,7 @@ wiki_links | false | If true, map extracted key terms to their Wikipedia pages.
 extract_facts | true | Extract SVO-style factual statements from the article.
 extract_claims | true | Extract specific claims made by the article.
 key_points | 5 | The number of key points/key takeaway items to extract.
+focus_terms | null | Semicolon separated list of terms around which the extracted highlights will focus.
 citation_contexts | false | If true, extract the inline citation contexts (preceding and current sentences).
 inline_citation_links | false | If true, link inline citations to their identifiers in the references.
 extract_pico | true | Extract population, intervention, control, outcome data.
