@@ -1145,6 +1145,11 @@ Remember to include your Authentication token with every request.
 <td>The number of key points/key takeaway items to extract.</td>
 </tr>
 <tr>
+<td>focus_terms</td>
+<td>null</td>
+<td>Semicolon separated list of terms around which the extracted highlights will focus.</td>
+</tr>
+<tr>
 <td>sampling</td>
 <td>representative</td>
 <td>For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.</td>
@@ -1341,6 +1346,11 @@ The remote URL can resolve to a document type of any of the formats listed for t
 <td>key_points</td>
 <td>5</td>
 <td>The number of key points/key takeaway items to extract.</td>
+</tr>
+<tr>
+<td>focus_terms</td>
+<td>null</td>
+<td>Semicolon separated list of terms around which the extracted highlights will focus.</td>
 </tr>
 <tr>
 <td>sampling</td>
@@ -1796,6 +1806,11 @@ Remember to include your Authentication token with every request.
 <td>The number of key points/key takeaway items to extract.</td>
 </tr>
 <tr>
+<td>focus_terms</td>
+<td>null</td>
+<td>Semicolon separated list of terms around which the extracted highlights will focus.</td>
+</tr>
+<tr>
 <td>citation_contexts</td>
 <td>false</td>
 <td>If true, extract the inline citation contexts (preceding and current sentences).</td>
@@ -1897,7 +1912,11 @@ Remember to include your Authentication token with every request.
 </tr>
 <tr>
 <td>date</td>
-<td>Article date</td>
+<td>Article year</td>
+</tr>
+<tr>
+<td>full_date</td>
+<td>Article date string in ISO 8601 format (where available)</td>
 </tr>
 <tr>
 <td>affiliations</td>
@@ -1906,6 +1925,10 @@ Remember to include your Authentication token with every request.
 <tr>
 <td>journal</td>
 <td>Journal title (from CrossRef)</td>
+</tr>
+<tr>
+<td>abbreviated_journal</td>
+<td>Abbreviated journal title (where available)</td>
 </tr>
 <tr>
 <td>volume</td>
@@ -2315,6 +2338,11 @@ The remote URL can resolve to a document type of any of the formats listed for t
 <td>key_points</td>
 <td>5</td>
 <td>The number of key points/key takeaway items to extract.</td>
+</tr>
+<tr>
+<td>focus_terms</td>
+<td>null</td>
+<td>Semicolon separated list of terms around which the extracted highlights will focus.</td>
 </tr>
 <tr>
 <td>citation_contexts</td>
