@@ -14,7 +14,6 @@ includes:
   - posters
   - highlights
   - metadata
-  - references
   - keywords
   - synopses
   - errors
@@ -26,18 +25,15 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Scholarcy APIs. We have three core API servies:
+Welcome to the Scholarcy APIs. We have two core API servies:
 
 1. **Metadata extraction API** at <https://api.scholarcy.com>
-This is a developer API that comprises a number of endpoints for extracting machine-readable knowledge as JSON data from documents in many formats.
-The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.
+   This is a developer API that comprises a number of endpoints for extracting machine-readable knowledge as JSON data from documents in many formats.
+   The service is optimised to work with research papers and articles, but should provide useful results for any document in any format.
 2. **Synopsis API** at <https://summarizer.scholarcy.com/>
-This includes a web front end for testing and a developer endpoint at `/summarize`
-3. **References API** at <https://ref.scholarcy.com/>
-This is a free, public, developer API that comprises endpoints for extracting references as JSON, XML, BibTeX, RIS, and CSV from PDF, Word and plain text documents. This service can be deployed for you on more powerful servers for use at scale.
+   This includes a web front end for testing and a developer endpoint at `/summarize`
 
 We provide examples in Shell, Ruby, and Python. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
 
 # Authentication
 
@@ -89,30 +85,6 @@ response = request.execute
 puts(response.body)
 ```
 
-```ruby
-
-# 3. References API:
-
-require 'rest-client'
-AUTH_TOKEN = 'abcdef' # Your API key
-API_DOMAIN = 'https://ref.scholarcy.com'
-POST_ENDPOINT = API_DOMAIN + '/api/references/download'
-headers = {"Authorization": "Bearer " + AUTH_TOKEN}
-file_path = '/path/to/local/file.pdf'
-
-request = RestClient::Request.new(
-          :method => :post,
-          :url => POST_ENDPOINT,
-          :headers => headers,
-          :payload => {
-            :multipart => true,
-            :file => File.new(file_path, 'rb')
-          })
-response = request.execute
-puts(response.body)
-```
-
-
 ```python
 
 # 1. Metadata API:
@@ -159,30 +131,6 @@ with open(file_path, 'rb') as file_data:
     print(r.json())
 ```
 
-```python
-
-# 3. References API:
-
-import requests
-timeout = 30
-
-AUTH_TOKEN = 'abcdefg' # Your API key
-API_DOMAIN = 'https://ref.scholarcy.com'
-POST_ENDPOINT = API_DOMAIN + '/api/references/download'
-headers = {'Authorization': 'Bearer ' + AUTH_TOKEN}
-
-file_path = '/path/to/local/file.pdf'
-
-with open(file_path, 'rb') as file_data:
-    file_payload = {'file': file_data}
-    r = requests.post(POST_ENDPOINT,
-          headers=headers,
-          files=file_payload,
-          timeout=timeout)
-    print(r.json())
-```
-
-
 ```shell
 
 # 1. Metadata API:
@@ -211,38 +159,14 @@ curl "https://summarizer.scholarcy.com/summarize" \
     -d "url=https://www.nature.com/articles/s41746-019-0180-3"
 ```
 
-```shell
-
-# 3. References API:
-
-# With shell, you can just pass the correct header with each request
-curl "https://ref.scholarcy.com/api/references/download" \
-  -H "Authorization: Bearer abcdefg" \
-  -F "file=@/path/to/local/file.pdf"
-
-  curl "https://ref.scholarcy.com/api/references/download" \
-    -H "Authorization: Bearer abcdefg" \
-    -d "url=https://www.nature.com/articles/s41746-019-0180-3.pdf"
-```
-
 > Make sure to replace `abcdefg` with your API key.
 
-Our APIs are currently open and can be used without authentication for a limited number of
-documents per day with documents below 7MB in size.
-
-For unauthenticated use, please omit the `Authorization` header,
-or pass an empty string for the `Bearer` token.
-
-For full, authenticated use of each API, you may contact us for an API key for either or both API services - please see our [Pricing page](https://www.scholarcy.com/pricing/).
-
-Each API service (metadata and synopsis) requires the purchase of a separate key.
-
-Soon you will be able to self-register an Scholarcy API key at our [developer portal](https://developers.scholarcy.com).
+Each API service (metadata and synopsis) requires a separate key.
 
 The Scholarcy APIs expects the API key to be included in all API requests to the server in a header that looks like the following:
 
 `Authorization: Bearer abcdefg`
 
 <aside class="notice">
-You must replace <code>abcdefg</code> with your personal API key.
+You must replace <code>abcdefg</code> with your partner API key.
 </aside>
