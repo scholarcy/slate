@@ -581,7 +581,7 @@ You must replace <code>abcdefg</code> with your partner API key.
     </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
     </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -594,9 +594,7 @@ You must replace <code>abcdefg</code> with your partner API key.
       </span><span class="s2">"1. Smith, J. (2001) A study on self-citation. J. Chem. Biol., 123, 456-789."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"2. Jones, R. (2015) He didn't write this one. Science, 101, 101010."</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"smith.j@uni.ac.uk"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"smith.j@uni.ac.uk"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -633,10 +631,7 @@ You must replace <code>abcdefg</code> with your partner API key.
       </span><span class="s2">"We ran some tests and this is what we found"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Introduction paragraph 2"</span><span class="p">,</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Introduction paragraph 2"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"We mixed some chemicals."</span><span class="p">,</span><span class="w">
         </span><span class="s2">"We heated them up."</span><span class="p">,</span><span class="w">
@@ -645,7 +640,7 @@ You must replace <code>abcdefg</code> with your partner API key.
       </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"There was a big explosion"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"But the crystals were pure"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"We identified a new compound"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"We identified a new compound"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"We proved some important things and we summarise them here."</span><span class="p">,</span><span class="w">
@@ -669,6 +664,9 @@ You must replace <code>abcdefg</code> with your partner API key.
 <li>Plain Text (.txt)</li>
 <li>LaTeX (.tex)</li>
 </ul>
+
+<p>Please note that when sending a file, at least one additional parameter needs to
+be sent with the payload, e.g. <code>start_page=1</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.scholarcy.com/api/posters/generate</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -766,8 +764,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith, J."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"doi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1010/101010.10.10.1101010"</span><span class="p">,</span><span class="w">
@@ -775,12 +772,8 @@ Remember to include your Authentication token with every request.
       </span><span class="nl">"doc_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"smith.j@uni.ac.uk"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"smith.j@uni.ac.uk"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -791,30 +784,17 @@ Remember to include your Authentication token with every request.
         </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 2 caption"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"figure_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"figure_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"poster_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.scholarcy.com/posters/file.pdf_agtuhsnt.pptx"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We prove some important facts in this paper"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"highlights"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -916,7 +896,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
     </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -930,9 +910,7 @@ Remember to include your Authentication token with every request.
         </span><span class="nl">"award-group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"funding-source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEDER/COMPETE"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"AAA/BBB/04007/2019"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"AAA/BBB/04007/2019"</span><span class="p">]</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"funding-statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We acknowledge financial support from Fundação para a Ciência e a Tecnologia and FEDER/COMPETE (grant AAA/BBB/04007/2019)"</span><span class="w">
@@ -973,10 +951,7 @@ Remember to include your Authentication token with every request.
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"structured_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Introduction paragraph 2"</span><span class="p">,</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Introduction paragraph 2"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"We mixed some chemicals."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"We heated them up."</span><span class="p">,</span><span class="w">
@@ -985,7 +960,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"There was a big explosion"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"But the crystals were pure"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"We identified a new compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We identified a new compound"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"We proved some important things and we summarise them here."</span><span class="p">,</span><span class="w">
@@ -1008,6 +983,9 @@ Remember to include your Authentication token with every request.
 <li>Plain Text (.txt)</li>
 <li>LaTeX (.tex)</li>
 </ul>
+
+<p>Please note that when sending a file, at least one additional parameter needs to
+be sent with the payload, e.g. <code>wiki_links=true</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.scholarcy.com/api/highlights/extract</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -1172,7 +1150,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
     </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1186,9 +1164,7 @@ Remember to include your Authentication token with every request.
         </span><span class="nl">"award-group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"funding-source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEDER/COMPETE"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"AAA/BBB/04007/2019"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"AAA/BBB/04007/2019"</span><span class="p">]</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"funding-statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
@@ -1203,14 +1179,10 @@ Remember to include your Authentication token with every request.
   </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"structured_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1381,7 +1353,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
     </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1391,17 +1363,13 @@ Remember to include your Authentication token with every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"author@email.com"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"author@email.com"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"award-group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"funding-source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEDER/COMPETE"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"AAA/BBB/04007/2019"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="nl">"award-id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"AAA/BBB/04007/2019"</span><span class="p">]</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"funding-statement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We acknowledge financial support from Fundação para a Ciência e a Tecnologia and FEDER/COMPETE (grant AAA/BBB/04007/2019)"</span><span class="w">
@@ -1415,23 +1383,15 @@ Remember to include your Authentication token with every request.
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Construct measurements"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"sections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Introduction section contents"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"methodology"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Methods section contents"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Main results contents"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Concluding remarks"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Introduction section contents"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"methodology"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Methods section contents"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Main results contents"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Concluding remarks"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"limitations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"There are also several limitations to this research. Small sample size was an issue."</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -1451,37 +1411,23 @@ Remember to include your Authentication token with every request.
   </span><span class="nl">"structured_content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABSTRACT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRODUCTION"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Introduction paragraph 2"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Introduction paragraph 2"</span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESEARCH METHODOLOGY"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Methods paragraph 1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Methods paragraph 2"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Methods paragraph 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Methods paragraph 2"</span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FINDINGS AND DISCUSSION"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Results paragraph 1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Results paragraph 2"</span><span class="p">,</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Results paragraph 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Results paragraph 2"</span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONCLUSION"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"Conclusion paragraph 1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Conclusion paragraph 2"</span><span class="p">,</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Conclusion paragraph 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Conclusion paragraph 2"</span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"participants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1489,7 +1435,7 @@ Remember to include your Authentication token with every request.
       </span><span class="nl">"participant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patients"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fifteen patients participated in the study."</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1564,10 +1510,7 @@ Remember to include your Authentication token with every request.
   </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"structured_summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Introduction paragraph 2"</span><span class="p">,</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"Introduction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Introduction paragraph 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Introduction paragraph 2"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"Methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"We mixed some chemicals."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"We heated them up."</span><span class="p">,</span><span class="w">
@@ -1576,7 +1519,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"Results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"There was a big explosion"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"But the crystals were pure"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"We identified a new compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"We identified a new compound"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"Conclusion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"We proved some important things and we summarise them here."</span><span class="p">,</span><span class="w">
@@ -1599,6 +1542,9 @@ Remember to include your Authentication token with every request.
 <li>Plain Text (.txt)</li>
 <li>LaTeX (.tex)</li>
 </ul>
+
+<p>Please note that when sending a file, at least one additional parameter needs to
+be sent with the payload, e.g. <code>engine=v1</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.scholarcy.com/api/metadata/extract</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -2028,7 +1974,7 @@ Remember to include your Authentication token with every request.
 </tr>
 <tr>
 <td>top_statements</td>
-<td>The top 3-7 key points in the document.  <br /> Typically, these highlights will include introductory and concluding information, as well as the main claims and findings of the article</td>
+<td>The top 3-7 key points in the document. <br /> Typically, these highlights will include introductory and concluding information, as well as the main claims and findings of the article</td>
 </tr>
 <tr>
 <td>headline</td>
@@ -2093,7 +2039,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
     </span><span class="nl">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Department of Silly Walks, University of Life, London, UK"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"arxiv"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2103,9 +2049,7 @@ Remember to include your Authentication token with every request.
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a very exciting paper. Please read it."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"references"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"author@email.com"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"author@email.com"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"table_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"figure_captions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
@@ -2446,7 +2390,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"Consumer Online Brand-Related Activity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.014749262536873156</span><span class="p">,</span><span class="w">
     </span><span class="nl">"average variance extracted"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011799410029498525</span><span class="p">,</span><span class="w">
     </span><span class="nl">"common latent factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"online branding"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"online branding"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2478,6 +2422,9 @@ Remember to include your Authentication token with every request.
 <li>Plain Text (.txt)</li>
 <li>LaTeX (.tex)</li>
 </ul>
+
+<p>Please note that when sending a file, at least one additional parameter needs to
+be sent with the payload, e.g. <code>output_format=csv</code>.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.scholarcy.com/api/keywords/extract</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -2652,7 +2599,7 @@ Remember to include your Authentication token with every request.
     </span><span class="nl">"Consumer Online Brand-Related Activity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.014749262536873156</span><span class="p">,</span><span class="w">
     </span><span class="nl">"average variance extracted"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011799410029498525</span><span class="p">,</span><span class="w">
     </span><span class="nl">"common latent factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"online branding"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"online branding"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008849557522123894</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2787,89 +2734,89 @@ Remember to include your Authentication token with every request.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"EPOSA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"European Project on OSteoArthritis"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"GPS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ISD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integrated Surface Database"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"OR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Researchers have used smartphone data to investigate the relationship between pain and weather conditions, and found that there is a small but significant relationship."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"physical activity"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/physical_activity"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"osteoarthritis"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/osteoarthritis"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atmospheric pressure"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/atmospheric_pressure"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rheumatoid arthritis"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/rheumatoid_arthritis"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Global_Positioning_System"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fibromyalgia"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/fibromyalgia"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arthritis"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/arthritis"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smartphone app"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/smartphone_app"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relative humidity"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/relative_humidity"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chronic pain"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/chronic_pain"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/odds_ratio"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parkinson disease"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Parkinson_disease"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joint pain"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/joint_pain"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wind speed"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/wind_speed"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cohort study"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cohort_study"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon, Anna L. Beukenhorst, Belay B. Yimer, Louise Cook, Antonio Gasparrini, Tal El-Hay, Bruce Hellman, Ben James, Ana M. Vicedo-Cabrera, Malcolm Maclure, Ricardo Silva, John Ainsworth, Huai Leng Pisaniello, Thomas House, Mark Lunt, Carolyn Gamble, Caroline Sanders, David M. Schultz, Jamie C. Sergeant, John McBeth (2019). How the weather affects the pain of citizen scientists using a smartphone app. npj Digital Medicine 2. https://www.nature.com/articles/s41746-019-0180-3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon et al."</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nature.com/articles/s41746-019-0180-3"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"readership_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"technical-readership-accurate"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;a class=</span><span class="se">\"</span><span class="s2">has-tooltip</span><span class="se">\"</span><span class="s2"> title=</span><span class="se">\"</span><span class="s2">Read the article</span><span class="se">\"</span><span class="s2"> target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2"> href=</span><span class="se">\"</span><span class="s2">https://www.nature.com/articles/s41746-019-0180-3</span><span class="se">\"</span><span class="s2">&gt;William Dixon et al. (2019)&lt;/a&gt; studied how the weather affects the pain of citizen scientists using a smartphone app. Weather has been thought to affect symptoms in patients with chronic disease since the time of Hippocrates over 2000 years ago.</span><span class="se">\n</span><span class="s2">Multivariable case-crossover analysis including the four state weather variables demonstrated that an increase in relative humidity was associated with a higher odds of a pain event with an OR of 1.139 (95% confidence interval 1.099</span><span class="se">\u</span><span class="s2">20131.181) per 10 percentage point increase.</span><span class="se">\n</span><span class="s2">This study has demonstrated that higher relative humidity and wind speed, and lower atmospheric pressure, were associated with increased pain severity in people with long-term pain conditions.</span><span class="se">\n</span><span class="s2">The </span><span class="se">\u</span><span class="s2">2018worst</span><span class="se">\u</span><span class="s2">2019 combination of weather variables would increase the odds of a pain event by just over 20% compared to an average day.&lt;br/&gt;&lt;br/&gt;There were 2658 patients involved in the research. Discussing potential improvements, </span><span class="se">\u</span><span class="s2">201cThere are potential limitations to this study.</span><span class="se">\n</span><span class="s2">It is possible only people with a strong belief in a weather</span><span class="se">\u</span><span class="s2">2013pain relationship participated.</span><span class="se">\n</span><span class="s2">Rain and cold weather were the most common pre-existing beliefs, authors say,</span><span class="se">\u</span><span class="s2">201d they admit. "</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"EPOSA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"European Project on OSteoArthritis"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"GPS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ISD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integrated Surface Database"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"OR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Researchers have used smartphone data to investigate the relationship between pain and weather conditions, and found that there is a small but significant relationship."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"physical activity"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/physical_activity"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"osteoarthritis"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/osteoarthritis"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atmospheric pressure"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/atmospheric_pressure"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rheumatoid arthritis"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/rheumatoid_arthritis"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Global_Positioning_System"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fibromyalgia"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/fibromyalgia"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arthritis"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/arthritis"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smartphone app"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/smartphone_app"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relative humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/relative_humidity"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chronic pain"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/chronic_pain"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/odds_ratio"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parkinson disease"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Parkinson_disease"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joint pain"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/joint_pain"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wind speed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/wind_speed"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cohort study"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cohort_study"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon, Anna L. Beukenhorst, Belay B. Yimer, Louise Cook, Antonio Gasparrini, Tal El-Hay, Bruce Hellman, Ben James, Ana M. Vicedo-Cabrera, Malcolm Maclure, Ricardo Silva, John Ainsworth, Huai Leng Pisaniello, Thomas House, Mark Lunt, Carolyn Gamble, Caroline Sanders, David M. Schultz, Jamie C. Sergeant, John McBeth (2019). How the weather affects the pain of citizen scientists using a smartphone app. npj Digital Medicine 2. https://www.nature.com/articles/s41746-019-0180-3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon et al."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nature.com/articles/s41746-019-0180-3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"readership_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"technical-readership-accurate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;a class=</span><span class="se">\"</span><span class="s2">has-tooltip</span><span class="se">\"</span><span class="s2"> title=</span><span class="se">\"</span><span class="s2">Read the article</span><span class="se">\"</span><span class="s2"> target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2"> href=</span><span class="se">\"</span><span class="s2">https://www.nature.com/articles/s41746-019-0180-3</span><span class="se">\"</span><span class="s2">&gt;William Dixon et al. (2019)&lt;/a&gt; studied how the weather affects the pain of citizen scientists using a smartphone app. Weather has been thought to affect symptoms in patients with chronic disease since the time of Hippocrates over 2000 years ago.</span><span class="se">\n</span><span class="s2">Multivariable case-crossover analysis including the four state weather variables demonstrated that an increase in relative humidity was associated with a higher odds of a pain event with an OR of 1.139 (95% confidence interval 1.099</span><span class="se">\u</span><span class="s2">20131.181) per 10 percentage point increase.</span><span class="se">\n</span><span class="s2">This study has demonstrated that higher relative humidity and wind speed, and lower atmospheric pressure, were associated with increased pain severity in people with long-term pain conditions.</span><span class="se">\n</span><span class="s2">The </span><span class="se">\u</span><span class="s2">2018worst</span><span class="se">\u</span><span class="s2">2019 combination of weather variables would increase the odds of a pain event by just over 20% compared to an average day.&lt;br/&gt;&lt;br/&gt;There were 2658 patients involved in the research. Discussing potential improvements, </span><span class="se">\u</span><span class="s2">201cThere are potential limitations to this study.</span><span class="se">\n</span><span class="s2">It is possible only people with a strong belief in a weather</span><span class="se">\u</span><span class="s2">2013pain relationship participated.</span><span class="se">\n</span><span class="s2">Rain and cold weather were the most common pre-existing beliefs, authors say,</span><span class="se">\u</span><span class="s2">201d they admit. "</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint generates a synopsis from a local file. File formats supported are:</p>
@@ -2999,89 +2946,89 @@ Remember to include your Authentication token with every request.
 <p>The above command returns JSON structured as for the POST endpoint:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"EPOSA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"European Project on OSteoArthritis"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"GPS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ISD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integrated Surface Database"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"OR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Researchers have used smartphone data to investigate the relationship between pain and weather conditions, and found that there is a small but significant relationship."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"physical activity"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/physical_activity"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"osteoarthritis"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/osteoarthritis"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atmospheric pressure"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/atmospheric_pressure"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rheumatoid arthritis"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/rheumatoid_arthritis"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Global_Positioning_System"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fibromyalgia"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/fibromyalgia"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arthritis"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/arthritis"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smartphone app"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/smartphone_app"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relative humidity"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/relative_humidity"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chronic pain"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/chronic_pain"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/odds_ratio"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parkinson disease"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Parkinson_disease"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joint pain"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/joint_pain"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wind speed"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/wind_speed"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cohort study"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cohort_study"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon, Anna L. Beukenhorst, Belay B. Yimer, Louise Cook, Antonio Gasparrini, Tal El-Hay, Bruce Hellman, Ben James, Ana M. Vicedo-Cabrera, Malcolm Maclure, Ricardo Silva, John Ainsworth, Huai Leng Pisaniello, Thomas House, Mark Lunt, Carolyn Gamble, Caroline Sanders, David M. Schultz, Jamie C. Sergeant, John McBeth (2019). How the weather affects the pain of citizen scientists using a smartphone app. npj Digital Medicine 2. https://www.nature.com/articles/s41746-019-0180-3"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon et al."</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"citation_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nature.com/articles/s41746-019-0180-3"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"readership_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"technical-readership-accurate"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;a class=</span><span class="se">\"</span><span class="s2">has-tooltip</span><span class="se">\"</span><span class="s2"> title=</span><span class="se">\"</span><span class="s2">Read the article</span><span class="se">\"</span><span class="s2"> target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2"> href=</span><span class="se">\"</span><span class="s2">https://www.nature.com/articles/s41746-019-0180-3</span><span class="se">\"</span><span class="s2">&gt;William Dixon et al. (2019)&lt;/a&gt; studied how the weather affects the pain of citizen scientists using a smartphone app. Weather has been thought to affect symptoms in patients with chronic disease since the time of Hippocrates over 2000 years ago.</span><span class="se">\n</span><span class="s2">Multivariable case-crossover analysis including the four state weather variables demonstrated that an increase in relative humidity was associated with a higher odds of a pain event with an OR of 1.139 (95% confidence interval 1.099</span><span class="se">\u</span><span class="s2">20131.181) per 10 percentage point increase.</span><span class="se">\n</span><span class="s2">This study has demonstrated that higher relative humidity and wind speed, and lower atmospheric pressure, were associated with increased pain severity in people with long-term pain conditions.</span><span class="se">\n</span><span class="s2">The </span><span class="se">\u</span><span class="s2">2018worst</span><span class="se">\u</span><span class="s2">2019 combination of weather variables would increase the odds of a pain event by just over 20% compared to an average day.&lt;br/&gt;&lt;br/&gt;There were 2658 patients involved in the research. Discussing potential improvements, </span><span class="se">\u</span><span class="s2">201cThere are potential limitations to this study.</span><span class="se">\n</span><span class="s2">It is possible only people with a strong belief in a weather</span><span class="se">\u</span><span class="s2">2013pain relationship participated.</span><span class="se">\n</span><span class="s2">Rain and cold weather were the most common pre-existing beliefs, authors say,</span><span class="se">\u</span><span class="s2">201d they admit. "</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"abbreviations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"EPOSA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"European Project on OSteoArthritis"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"GPS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ISD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Integrated Surface Database"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"OR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Researchers have used smartphone data to investigate the relationship between pain and weather conditions, and found that there is a small but significant relationship."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"physical activity"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/physical_activity"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"osteoarthritis"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/osteoarthritis"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atmospheric pressure"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/atmospheric_pressure"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rheumatoid arthritis"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/rheumatoid_arthritis"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Global Positioning System"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Global_Positioning_System"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fibromyalgia"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/fibromyalgia"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arthritis"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/arthritis"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"smartphone app"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/smartphone_app"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relative humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/relative_humidity"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chronic pain"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/chronic_pain"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"odds ratio"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/odds_ratio"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parkinson disease"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Parkinson_disease"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joint pain"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/joint_pain"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wind speed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/wind_speed"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cohort study"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/cohort_study"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"citation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon, Anna L. Beukenhorst, Belay B. Yimer, Louise Cook, Antonio Gasparrini, Tal El-Hay, Bruce Hellman, Ben James, Ana M. Vicedo-Cabrera, Malcolm Maclure, Ricardo Silva, John Ainsworth, Huai Leng Pisaniello, Thomas House, Mark Lunt, Carolyn Gamble, Caroline Sanders, David M. Schultz, Jamie C. Sergeant, John McBeth (2019). How the weather affects the pain of citizen scientists using a smartphone app. npj Digital Medicine 2. https://www.nature.com/articles/s41746-019-0180-3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William G. Dixon et al."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"citation_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nature.com/articles/s41746-019-0180-3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"readership_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"technical-readership-accurate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;a class=</span><span class="se">\"</span><span class="s2">has-tooltip</span><span class="se">\"</span><span class="s2"> title=</span><span class="se">\"</span><span class="s2">Read the article</span><span class="se">\"</span><span class="s2"> target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2"> href=</span><span class="se">\"</span><span class="s2">https://www.nature.com/articles/s41746-019-0180-3</span><span class="se">\"</span><span class="s2">&gt;William Dixon et al. (2019)&lt;/a&gt; studied how the weather affects the pain of citizen scientists using a smartphone app. Weather has been thought to affect symptoms in patients with chronic disease since the time of Hippocrates over 2000 years ago.</span><span class="se">\n</span><span class="s2">Multivariable case-crossover analysis including the four state weather variables demonstrated that an increase in relative humidity was associated with a higher odds of a pain event with an OR of 1.139 (95% confidence interval 1.099</span><span class="se">\u</span><span class="s2">20131.181) per 10 percentage point increase.</span><span class="se">\n</span><span class="s2">This study has demonstrated that higher relative humidity and wind speed, and lower atmospheric pressure, were associated with increased pain severity in people with long-term pain conditions.</span><span class="se">\n</span><span class="s2">The </span><span class="se">\u</span><span class="s2">2018worst</span><span class="se">\u</span><span class="s2">2019 combination of weather variables would increase the odds of a pain event by just over 20% compared to an average day.&lt;br/&gt;&lt;br/&gt;There were 2658 patients involved in the research. Discussing potential improvements, </span><span class="se">\u</span><span class="s2">201cThere are potential limitations to this study.</span><span class="se">\n</span><span class="s2">It is possible only people with a strong belief in a weather</span><span class="se">\u</span><span class="s2">2013pain relationship participated.</span><span class="se">\n</span><span class="s2">Rain and cold weather were the most common pre-existing beliefs, authors say,</span><span class="se">\u</span><span class="s2">201d they admit. "</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How the weather affects the pain of citizen scientists using a smartphone app"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint generates synopsis from a remote URL.
