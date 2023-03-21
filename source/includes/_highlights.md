@@ -57,7 +57,6 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
   -F "end_page=37"
 ```
 
-
 > The above command returns JSON structured like this:
 
 ```json
@@ -71,7 +70,7 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
     "pages": "15",
     "date": 2021,
     "affiliations": [
-      "Department of Silly Walks, University of Life, London, UK",
+      "Department of Silly Walks, University of Life, London, UK"
     ],
     "identifiers": {
       "arxiv": null,
@@ -85,9 +84,7 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
         "award-group": [
           {
             "funding-source": "FEDER/COMPETE",
-            "award-id": [
-              "AAA/BBB/04007/2019"
-            ]
+            "award-id": ["AAA/BBB/04007/2019"]
           }
         ],
         "funding-statement": "We acknowledge financial support from Fundação para a Ciência e a Tecnologia and FEDER/COMPETE (grant AAA/BBB/04007/2019)"
@@ -128,10 +125,7 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
   ],
   "summary": [],
   "structured_summary": {
-    "Introduction": [
-      "Introduction paragraph 1",
-      "Introduction paragraph 2",
-    ],
+    "Introduction": ["Introduction paragraph 1", "Introduction paragraph 2"],
     "Methods": [
       "We mixed some chemicals.",
       "We heated them up.",
@@ -140,7 +134,7 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
     "Results": [
       "There was a big explosion",
       "But the crystals were pure",
-      "We identified a new compound",
+      "We identified a new compound"
     ],
     "Conclusion": [
       "We proved some important things and we summarise them here.",
@@ -163,6 +157,8 @@ This endpoint extracts highlights from a local file. File formats supported are:
 - Plain Text (.txt)
 - LaTeX (.tex)
 
+Please note that when sending a file, at least one additional parameter needs to
+be sent with the payload, e.g. `wiki_links=true`.
 
 ### HTTP Request
 
@@ -170,33 +166,31 @@ This endpoint extracts highlights from a local file. File formats supported are:
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-file | null | A file object.
-url | null | URL of public, open-access document.
-text | null | Plain text content to be processed.
-start_page | 1 | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-end_page | null | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-external_metadata | false | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).
-wiki_links | false | If true, map extracted key terms to their Wikipedia pages
-reference_links | false | If true, parse and link each reference to its full text location
-replace_pronouns | false | If true, replace first-person pronouns with third-person mentions (the author(s)?, they).
-key_points | 5 | The number of key points/key takeaway items to extract.
-focus_terms | null | Semicolon separated list of terms around which the extracted highlights will focus.
-sampling | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.
-extract_snippets | true | If true, sample snippets from each section, otherwise, sample the full text.
-add_background_info | false | If true, generate an introductory sentence. Useful generating an abstract from an article.
-add_concluding_info | false | If true, generate an concluding sentence. Useful generating an abstract from an article.
-structured_summary | false | If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.
-summary_engine | v1 | v1: Best for articles. v2: best for book chapters.
-highlights_algorithm | weighted | weighted: attend more closely to the results and conclusion. unweighted: attend to all content equally.
-headline_from | highlights | highlights: use the highest scoring highlight as the headline. summary: use the first summary sentence as the headline. conclusions: use the first conclusion statement as a headline. claims: use the main claim as the headline.
-
+| Parameter            | Default        | Description                                                                                                                                                                                                                        |
+| -------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file                 | null           | A file object.                                                                                                                                                                                                                     |
+| url                  | null           | URL of public, open-access document.                                                                                                                                                                                               |
+| text                 | null           | Plain text content to be processed.                                                                                                                                                                                                |
+| start_page           | 1              | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                                                    |
+| end_page             | null           | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                                                     |
+| external_metadata    | false          | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).                                                                                                                                               |
+| wiki_links           | false          | If true, map extracted key terms to their Wikipedia pages                                                                                                                                                                          |
+| reference_links      | false          | If true, parse and link each reference to its full text location                                                                                                                                                                   |
+| replace_pronouns     | false          | If true, replace first-person pronouns with third-person mentions (the author(s)?, they).                                                                                                                                          |
+| key_points           | 5              | The number of key points/key takeaway items to extract.                                                                                                                                                                            |
+| focus_terms          | null           | Semicolon separated list of terms around which the extracted highlights will focus.                                                                                                                                                |
+| sampling             | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.                                                                                                   |
+| extract_snippets     | true           | If true, sample snippets from each section, otherwise, sample the full text.                                                                                                                                                       |
+| add_background_info  | false          | If true, generate an introductory sentence. Useful generating an abstract from an article.                                                                                                                                         |
+| add_concluding_info  | false          | If true, generate an concluding sentence. Useful generating an abstract from an article.                                                                                                                                           |
+| structured_summary   | false          | If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.                                                                                                        |
+| summary_engine       | v1             | v1: Best for articles. v2: best for book chapters.                                                                                                                                                                                 |
+| highlights_algorithm | weighted       | weighted: attend more closely to the results and conclusion. unweighted: attend to all content equally.                                                                                                                            |
+| headline_from        | highlights     | highlights: use the highest scoring highlight as the headline. summary: use the first summary sentence as the headline. conclusions: use the first conclusion statement as a headline. claims: use the main claim as the headline. |
 
 <aside class="success">
 Remember to include your Authentication token with every request.
 </aside>
-
 
 ## GET highlights from a URL
 
@@ -249,7 +243,6 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
 
 ```
 
-
 > The above command returns JSON structured as for the POST endpoint:
 
 ```json
@@ -263,7 +256,7 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
     "pages": "15",
     "date": 2021,
     "affiliations": [
-      "Department of Silly Walks, University of Life, London, UK",
+      "Department of Silly Walks, University of Life, London, UK"
     ],
     "identifiers": {
       "arxiv": null,
@@ -277,9 +270,7 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
         "award-group": [
           {
             "funding-source": "FEDER/COMPETE",
-            "award-id": [
-              "AAA/BBB/04007/2019"
-            ]
+            "award-id": ["AAA/BBB/04007/2019"]
           }
         ],
         "funding-statement": "..."
@@ -294,14 +285,10 @@ curl "https://api.scholarcy.com/api/highlights/extract" \
   "findings": [],
   "summary": [],
   "structured_summary": {
-    "Introduction": [
-    ],
-    "Methods": [
-    ],
-    "Results": [
-    ],
-    "Conclusion": [
-    ]
+    "Introduction": [],
+    "Methods": [],
+    "Results": [],
+    "Conclusion": []
   }
 }
 ```
@@ -315,26 +302,26 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-url | null | URL of public, open-access document.
-text | null | Plain text content to be processed.
-start_page | 1 | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-end_page | null | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-external_metadata | false | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).
-wiki_links | false | If true, map extracted key terms to their Wikipedia pages
-reference_links | false | If true, parse and link each reference to its full text location
-replace_pronouns | false | If true, replace first-person pronouns with third-person mentions (the author(s)?, they).
-key_points | 5 | The number of key points/key takeaway items to extract.
-focus_terms | null | Semicolon separated list of terms around which the extracted highlights will focus.
-sampling | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.
-extract_snippets | true | If true, sample snippets from each section, otherwise, sample the full text.
-add_background_info | false | If true, generate an introductory sentence. Useful generating an abstract from an article.
-add_concluding_info | false | If true, generate an concluding sentence. Useful generating an abstract from an article.
-structured_summary | false | If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.
-summary_engine | v1 | v1: Best for articles. v2: best for book chapters.
-highlights_algorithm | weighted | weighted: attend more closely to the results and conclusion. unweighted: attend to all content equally.
-headline_from | highlights | highlights: use the highest scoring highlight as the headline. summary: use the first summary sentence as the headline. conclusions: use the first conclusion statement as a headline. claims: use the main claim as the headline.
+| Parameter            | Default        | Description                                                                                                                                                                                                                        |
+| -------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url                  | null           | URL of public, open-access document.                                                                                                                                                                                               |
+| text                 | null           | Plain text content to be processed.                                                                                                                                                                                                |
+| start_page           | 1              | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                                                    |
+| end_page             | null           | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                                                     |
+| external_metadata    | false          | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).                                                                                                                                               |
+| wiki_links           | false          | If true, map extracted key terms to their Wikipedia pages                                                                                                                                                                          |
+| reference_links      | false          | If true, parse and link each reference to its full text location                                                                                                                                                                   |
+| replace_pronouns     | false          | If true, replace first-person pronouns with third-person mentions (the author(s)?, they).                                                                                                                                          |
+| key_points           | 5              | The number of key points/key takeaway items to extract.                                                                                                                                                                            |
+| focus_terms          | null           | Semicolon separated list of terms around which the extracted highlights will focus.                                                                                                                                                |
+| sampling             | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.                                                                                                   |
+| extract_snippets     | true           | If true, sample snippets from each section, otherwise, sample the full text.                                                                                                                                                       |
+| add_background_info  | false          | If true, generate an introductory sentence. Useful generating an abstract from an article.                                                                                                                                         |
+| add_concluding_info  | false          | If true, generate an concluding sentence. Useful generating an abstract from an article.                                                                                                                                           |
+| structured_summary   | false          | If true, summarise each of the main sections separately, and then provide a summary structured according to those sections.                                                                                                        |
+| summary_engine       | v1             | v1: Best for articles. v2: best for book chapters.                                                                                                                                                                                 |
+| highlights_algorithm | weighted       | weighted: attend more closely to the results and conclusion. unweighted: attend to all content equally.                                                                                                                            |
+| headline_from        | highlights     | highlights: use the highest scoring highlight as the headline. summary: use the first summary sentence as the headline. conclusions: use the first conclusion statement as a headline. claims: use the main claim as the headline. |
 
 <aside class="success">
 Remember to include your Authentication token with every request.

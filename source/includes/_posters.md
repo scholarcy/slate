@@ -59,7 +59,6 @@ curl "https://api.scholarcy.com/api/posters/generate" \
   -F "end_page=37"
 ```
 
-
 > The above command returns JSON structured like this:
 
 ```json
@@ -73,7 +72,7 @@ curl "https://api.scholarcy.com/api/posters/generate" \
     "pages": "15",
     "date": 2021,
     "affiliations": [
-      "Department of Silly Walks, University of Life, London, UK",
+      "Department of Silly Walks, University of Life, London, UK"
     ],
     "identifiers": {
       "arxiv": null,
@@ -86,9 +85,7 @@ curl "https://api.scholarcy.com/api/posters/generate" \
       "1. Smith, J. (2001) A study on self-citation. J. Chem. Biol., 123, 456-789.",
       "2. Jones, R. (2015) He didn't write this one. Science, 101, 101010."
     ],
-    "emails": [
-      "smith.j@uni.ac.uk"
-    ],
+    "emails": ["smith.j@uni.ac.uk"],
     "figure_captions": [
       {
         "id": "1",
@@ -125,10 +122,7 @@ curl "https://api.scholarcy.com/api/posters/generate" \
       "We ran some tests and this is what we found"
     ],
     "summary": {
-      "Introduction": [
-        "Introduction paragraph 1",
-        "Introduction paragraph 2",
-      ],
+      "Introduction": ["Introduction paragraph 1", "Introduction paragraph 2"],
       "Methods": [
         "We mixed some chemicals.",
         "We heated them up.",
@@ -137,7 +131,7 @@ curl "https://api.scholarcy.com/api/posters/generate" \
       "Results": [
         "There was a big explosion",
         "But the crystals were pure",
-        "We identified a new compound",
+        "We identified a new compound"
       ],
       "Conclusion": [
         "We proved some important things and we summarise them here.",
@@ -161,6 +155,8 @@ This endpoint generates a poster from a local file. File formats supported are:
 - Plain Text (.txt)
 - LaTeX (.tex)
 
+Please note that when sending a file, at least one additional parameter needs to
+be sent with the payload, e.g. `start_page=1`.
 
 ### HTTP Request
 
@@ -168,19 +164,17 @@ This endpoint generates a poster from a local file. File formats supported are:
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-file | null | A file object.
-url | null | URL of public, open-access document.
-type | full | The type of poster to generate. `full` will create a large, landscape poster with blocks for each section. `headline` will create a portrait poster containing the main takeaway finding and a single image.
-start_page | 1 | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-end_page | null | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-
+| Parameter  | Default | Description                                                                                                                                                                                                  |
+| ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| file       | null    | A file object.                                                                                                                                                                                               |
+| url        | null    | URL of public, open-access document.                                                                                                                                                                         |
+| type       | full    | The type of poster to generate. `full` will create a large, landscape poster with blocks for each section. `headline` will create a portrait poster containing the main takeaway finding and a single image. |
+| start_page | 1       | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                              |
+| end_page   | null    | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                               |
 
 <aside class="success">
 Remember to include your Authentication token with every request.
 </aside>
-
 
 ## GET a poster from a URL
 
@@ -237,7 +231,6 @@ curl "https://api.scholarcy.com/api/posters/generate" \
 
 ```
 
-
 > The above command returns JSON structured as for the POST endpoint:
 
 ```json
@@ -250,8 +243,7 @@ curl "https://api.scholarcy.com/api/posters/generate" \
     "author": "Smith, J.",
     "pages": "15",
     "date": 2021,
-    "affiliations": [
-    ],
+    "affiliations": [],
     "identifiers": {
       "arxiv": null,
       "doi": "10.1010/101010.10.10.1101010",
@@ -259,12 +251,8 @@ curl "https://api.scholarcy.com/api/posters/generate" \
       "doc_id": null
     },
     "abstract": "This is a very exciting paper. Please read it.",
-    "references": [
-
-    ],
-    "emails": [
-      "smith.j@uni.ac.uk"
-    ],
+    "references": [],
+    "emails": ["smith.j@uni.ac.uk"],
     "figure_captions": [
       {
         "id": "1",
@@ -275,30 +263,17 @@ curl "https://api.scholarcy.com/api/posters/generate" \
         "caption": "Figure 2 caption"
       }
     ],
-    "figure_urls": [
-
-    ],
+    "figure_urls": [],
     "poster_url": "https://api.scholarcy.com/posters/file.pdf_agtuhsnt.pptx",
-    "keywords": [
-    ],
-    "abbreviations": {
-    },
+    "keywords": [],
+    "abbreviations": {},
     "headline": "We prove some important facts in this paper",
-    "highlights": [
-    ],
+    "highlights": [],
     "summary": {
-      "Introduction": [
-
-      ],
-      "Methods": [
-
-      ],
-      "Results": [
-
-      ],
-      "Conclusion": [
-
-      ]
+      "Introduction": [],
+      "Methods": [],
+      "Results": [],
+      "Conclusion": []
     }
   }
 }
@@ -313,12 +288,12 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-url | null | URL of public, open-access document.
-type | full | The type of poster to generate. `full` will create a large, landscape poster with blocks for each section. `headline` will create a portrait poster containing the main takeaway finding and a single image.
-start_page | 1 | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-end_page | null | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
+| Parameter  | Default | Description                                                                                                                                                                                                  |
+| ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| url        | null    | URL of public, open-access document.                                                                                                                                                                         |
+| type       | full    | The type of poster to generate. `full` will create a large, landscape poster with blocks for each section. `headline` will create a portrait poster containing the main takeaway finding and a single image. |
+| start_page | 1       | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                              |
+| end_page   | null    | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.                                                                               |
 
 <aside class="success">
 Remember to include your Authentication token with every request.

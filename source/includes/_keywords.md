@@ -57,7 +57,6 @@ curl "https://api.scholarcy.com/api/keywords/extract" \
   -F "end_page=37"
 ```
 
-
 > The above command returns JSON structured like this:
 
 ```json
@@ -124,7 +123,7 @@ curl "https://api.scholarcy.com/api/keywords/extract" \
     "Consumer Online Brand-Related Activity": 0.014749262536873156,
     "average variance extracted": 0.011799410029498525,
     "common latent factor": 0.008849557522123894,
-    "online branding": 0.008849557522123894,
+    "online branding": 0.008849557522123894
   }
 }
 ```
@@ -157,6 +156,8 @@ This endpoint extracts key terms from a local file. File formats supported are:
 - Plain Text (.txt)
 - LaTeX (.tex)
 
+Please note that when sending a file, at least one additional parameter needs to
+be sent with the payload, e.g. `output_format=csv`.
 
 ### HTTP Request
 
@@ -164,24 +165,22 @@ This endpoint extracts key terms from a local file. File formats supported are:
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-file | null | A file object.
-url | null | URL of public, open-access document.
-text | null | Plain text content to be processed.
-start_page | 1 | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-end_page | null | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-external_metadata | false | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).
-wiki_links | false | If true, map extracted key terms to their Wikipedia pages
-sampling | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.
-extract_snippets | true | If true, sample snippets from each section, otherwise, sample the full text.
-output_format | json | json or CSV.
-
+| Parameter         | Default        | Description                                                                                                                      |
+| ----------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| file              | null           | A file object.                                                                                                                   |
+| url               | null           | URL of public, open-access document.                                                                                             |
+| text              | null           | Plain text content to be processed.                                                                                              |
+| start_page        | 1              | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.  |
+| end_page          | null           | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.   |
+| external_metadata | false          | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).                                             |
+| wiki_links        | false          | If true, map extracted key terms to their Wikipedia pages                                                                        |
+| sampling          | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content. |
+| extract_snippets  | true           | If true, sample snippets from each section, otherwise, sample the full text.                                                     |
+| output_format     | json           | json or CSV.                                                                                                                     |
 
 <aside class="success">
 Remember to include your Authentication token with every request.
 </aside>
-
 
 ## GET key terms from a URL
 
@@ -233,7 +232,6 @@ curl "https://api.scholarcy.com/api/keywords/extract" \
   -d "start_page=1"
 
 ```
-
 
 > The above command returns JSON structured as for the POST endpoint:
 
@@ -303,7 +301,7 @@ curl "https://api.scholarcy.com/api/keywords/extract" \
     "Consumer Online Brand-Related Activity": 0.014749262536873156,
     "average variance extracted": 0.011799410029498525,
     "common latent factor": 0.008849557522123894,
-    "online branding": 0.008849557522123894,
+    "online branding": 0.008849557522123894
   }
 }
 ```
@@ -332,17 +330,17 @@ The remote URL can resolve to a document type of any of the formats listed for t
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-url | null | URL of public, open-access document.
-text | null | Plain text content to be processed.
-start_page | 1 | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-end_page | null | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.
-external_metadata | false | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).
-wiki_links | false | If true, map extracted key terms to their Wikipedia pages
-sampling | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content.
-extract_snippets | true | If true, sample snippets from each section, otherwise, sample the full text.
-output_format | json | json or CSV.
+| Parameter         | Default        | Description                                                                                                                      |
+| ----------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| url               | null           | URL of public, open-access document.                                                                                             |
+| text              | null           | Plain text content to be processed.                                                                                              |
+| start_page        | 1              | Start reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.  |
+| end_page          | null           | Stop reading the document from this page (PDF urls only). Useful for processing a single article/chapter within a larger file.   |
+| external_metadata | false          | If true, fetch article metadata from the relevant remote repository (e.g. CrossRef).                                             |
+| wiki_links        | false          | If true, map extracted key terms to their Wikipedia pages                                                                        |
+| sampling          | representative | For large documents, when extracting key terms, use either a representative sample of the full content, or the fulltext content. |
+| extract_snippets  | true           | If true, sample snippets from each section, otherwise, sample the full text.                                                     |
+| output_format     | json           | json or CSV.                                                                                                                     |
 
 <aside class="success">
 Remember to include your Authentication token with every request.
